@@ -1,0 +1,17 @@
+syntax = "proto3";
+package contacts2;
+
+// 外部message也可以用；
+import "phone2.proto";
+
+// 此message可以嵌套到其他message里面；
+// message Phone{
+//     string number = 1;
+// }
+
+message PeopleInfo{
+    string name = 1;
+    int32 age = 2;
+    // repeated string phone_numbers = 3;
+    repeated phone.Phone phone = 3;
+}

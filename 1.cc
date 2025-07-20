@@ -1,27 +1,24 @@
-#include <sw/redis++/redis++.h>
-#include <iostream>
-using namespace sw::redis;
-
+#include <ncurses.h>
 
 int main() {
-    try {
-        // 连接参数：Redis服务器的IP和端口
-        Redis redis("tcp://127.0.0.1:6379");
+    initscr();            // 初始化屏幕
+    cbreak();             // 禁用行缓冲
+    noecho();             // 输入不回显
+    keypad(stdscr, TRUE); // 启用方向键
 
-        // 测试连接，设置一个键值对
-        redis.set("key", "value");
-        redis.del("key");
-        auto val = redis.get("key");
-        
-        if (val) {
-            std::cout << "key: " << *val << std::endl;
-        } else {
-            std::cout << "key not found" << std::endl;
-        }
+    mvprintw(2, 10, "Username: ");
+    char username[50];
+    getstr(username);
 
-    } catch (const Error &e) {
-        std::cerr << "Redis error: " << e.what() << std::endl;
-    }
+    mvprintw(4, 10, "Password: ");
+    char password[50];
+    getstr(password);
 
+    mvprintw(6, 10, "Press any key to submit...");
+    getch();
+
+    endwin(); // 关闭 ncurses 模式
+
+    // 继续用 username 和 password 做验证
     return 0;
 }

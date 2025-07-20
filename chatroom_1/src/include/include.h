@@ -11,4 +11,16 @@
 #include <ctime>
 #include <cstdint>
 #include <sstream>
+#include <random>
+#include <thread>
+#include <mutex>
+#include <memory>
+#include <unordered_map>
 
+
+
+
+#define NUM 8
+#define MAX_EVENT 20
+#define PORT 9090
+#define MAX_NUM 1024

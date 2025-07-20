@@ -1,0 +1,9 @@
+// 首行指定语法；
+syntax = "proto3";
+package contacts;
+
+// 联系人message定义
+message PeopleInfo{
+    string name = 1; // 1是它的标识符(字段编号)
+    int32 age = 2; // 不能使用相同字段编号
+}

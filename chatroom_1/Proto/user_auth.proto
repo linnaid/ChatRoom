@@ -10,6 +10,11 @@ enum actions{
     LVERIFY = 5;
 }
 
+enum Select{
+    PASSWORD = 0;
+    EMAIL = 1;
+}
+
 message Auth{
     actions action= 1;
     RegisterRequest req = 2;
@@ -30,6 +35,8 @@ message Register_Ver{
 message Login_Ver{
     bool decide = 1;
     string email_msg = 2;
+    string time = 3;
+    string username = 4;
 }
 
 message RegisterRequest{
@@ -47,9 +54,11 @@ message RegisterResponse{
 }
    
 message LogInRequest{
-    string username = 1;
-    string password = 2;
-    string Verification_code = 3;
+    Select select = 1;
+    string username = 2;
+    string password = 3;
+    string email = 4;
+    string Verification_code = 5;
 }
 
 message LogInResponse{

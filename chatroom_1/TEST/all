@@ -1,0 +1,151 @@
+ChatRoom/
+│
+├── src/
+│   ├── ChatRoom.cpp          // 聊天室主要逻辑
+│   ├── ChatRoom.h            // 聊天室头文件
+│   ├── ClientHandler.cpp     // 处理每个客户端的线程
+│   ├── ClientHandler.h       // 处理客户端的头文件
+│   ├── Server.cpp            // 服务器端代码，负责监听和连接
+│   ├── Server.h              // 服务器头文件
+│   └── Utils.cpp             // 辅助工具类，比如处理消息的编码解码等
+│   └── Utils.h               // 辅助工具头文件
+│
+├── CMakeLists.txt            // CMake构建文件
+└── README.md                 // 项目说明
+
+
+chatroom-server/
+│
+├── src/                           # 主源代码目录
+│   ├── server/                    # 服务器核心逻辑
+│   │   ├── ChatServer.cpp         # 主聊天服务器实现
+│   │   ├── ClientSession.cpp      # 客户端连接会话处理
+│   │   ├── MessageRouter.cpp      # 消息分发路由
+│   │   └── ...                    # 其他通信相关组件
+│   │
+│   ├── controllers/              # 控制器（处理具体命令或消息类型）
+│   │   ├── UserController.cpp
+│   │   ├── ChatRoomController.cpp
+│   │   └── MessageController.cpp
+│   │
+│   ├── services/                 # 业务逻辑层
+│   │   ├── UserService.cpp
+│   │   ├── MessageService.cpp
+│   │   ├── ChatRoomService.cpp
+│   │   └── ...
+│   │
+│   ├── models/                   # 数据模型类（结构体、对象等）
+│   │   ├── User.hpp
+│   │   ├── Message.hpp
+│   │   ├── ChatRoom.hpp
+│   │   └── ...
+│   │
+│   ├── database/                 # 数据访问与持久化
+│   │   ├── DBConnection.cpp      # 数据库连接管理（如 MySQL/PostgreSQL）
+│   │   ├── UserRepository.cpp
+│   │   ├── MessageRepository.cpp
+│   │   └── ...
+│   │
+│   ├── protocol/                 # 消息协议定义与序列化（如 JSON、protobuf）
+│   │   ├── MessageCodec.cpp
+│   │   ├── ProtocolHandler.cpp
+│   │   └── ...
+│   │
+│   ├── utils/                    # 公共工具类（加密、时间处理、日志）
+│   │   ├── Logger.cpp
+│   │   ├── ConfigLoader.cpp
+│   │   └── UUIDGenerator.cpp
+│   │
+│   ├── main.cpp                  # 程序入口（main 函数）
+│
+├── include/                      # 公共头文件目录
+│   └── （与 src 对应的 .hpp/.h 文件）
+│
+├── config/                       # 配置文件（JSON、INI、YAML等）
+│   ├── db_config.json
+│   ├── server_config.json
+│   └── ...
+│
+├── logs/                         # 日志输出目录
+│
+├── tests/                        # 单元测试与集成测试
+│   ├── test_UserService.cpp
+│   ├── test_MessageCodec.cpp
+│   └── ...
+│
+├── CMakeLists.txt                # CMake 构建脚本
+├── README.md
+└── LICENSE
+
+✅ 1. 数据模型层（Model）
+首先定义好最基础的数据结构，供其他模块调用。
+
+models/User.hpp
+
+models/ChatRoom.hpp
+
+models/Message.hpp
+
+✅ 2. 工具类（Utils）
+写好密码加密、Token 生成等基本工具。
+
+utils/PasswordHasher.cpp/hpp（使用 SHA256 + salt 或 bcrypt）
+
+utils/TokenGenerator.cpp/hpp（生成 session token / UUID）
+
+utils/Logger.cpp/hpp（可选，简单日志系统）
+
+✅ 3. 数据访问层（Repository）
+编写数据库访问逻辑（最初只写用户相关的）。
+
+database/DBConnection.cpp/hpp（连接池或简单封装）
+
+database/UserRepository.cpp/hpp
+
+✅ 4. 服务层（Service）
+处理用户登录注册逻辑，调用 DAO 和工具类。
+
+services/UserService.cpp/hpp
+
+✅ 5. 协议层（Protocol）
+定义与客户端通信的协议格式（JSON/Protobuf 编解码）。
+
+protocol/ProtocolHandler.cpp/hpp
+
+protocol/MessageCodec.cpp/hpp
+
+✅ 6. 控制器层（Controller）
+实现处理登录/注册请求的函数，并组织返回消息。
+
+controllers/UserController.cpp/hpp
+
+✅ 7. Server 层
+写 WebSocket / TCP 服务器，接收客户端请求并调用对应控制器。
+
+server/ChatServer.cpp/hpp
+
+server/ClientSession.cpp/hpp
+
+✅ 8. main.cpp
+启动服务器，监听端口，初始化依赖模块。
+
+📈 第二阶段：聊天功能（私聊/群聊）
+models/Message.hpp & ChatRoom.hpp 进一步扩展
+
+services/MessageService.cpp、ChatRoomService.cpp
+
+database/MessageRepository.cpp、ChatRoomRepository.cpp
+
+controllers/MessageController.cpp、ChatRoomController.cpp
+
+server/MessageRouter.cpp：消息分发、广播逻辑
+
+🧪 第三阶段：可选组件
+异步任务队列（如 jobs/MessageQueue.cpp）
+
+Redis 缓存（cache/RedisClient.cpp）
+
+离线消息、推送服务、日志系统
+
+单元测试（tests/）
+

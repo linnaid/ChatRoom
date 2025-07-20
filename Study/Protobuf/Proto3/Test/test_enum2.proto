@@ -1,0 +1,6 @@
+syntax = "proto3";
+package test_enum2;
+
+enum PhoneTypeCopy {
+    MP = 0;
+}

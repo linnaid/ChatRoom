@@ -1,0 +1,20 @@
+syntax = "proto3";
+package test_enum;
+
+import "test_enum2.proto";
+
+enum PhoneType{
+    MP = 0;
+    TEL = 1;
+}
+
+// enum PhoneTypeCopy{
+//     MP_C = 0;
+// }
+
+message Phone{
+    // enum PhoneType{
+    // MP = 0;
+    // TEL = 1;
+    // }
+}

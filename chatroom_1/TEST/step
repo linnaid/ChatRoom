@@ -1,0 +1,244 @@
+/chatserver
+├── main.cpp                  # 启动入口
+├── net/                     # 网络层
+│   ├── TcpServer.h / .cpp   # 封装 accept、连接管理
+│   ├── Connection.h / .cpp  # 每个客户端连接
+│   └── EventLoop.h          # epoll/select 封装（可选）
+├── protocol/                # 协议层
+│   └── MessageCodec.h       # 协议解析，例如 Protobuf 消息编解码
+├── service/                 # 业务逻辑层
+│   ├── AuthService.h / .cpp # 登录注册处理模块
+│   └── ChatService.h / .cpp # 聊天、加好友、群聊等模块
+├── model/                   # 数据模型/数据库交互层
+│   └── UserModel.h / .cpp   # 用户数据操作（如存储、校验密码）
+
+✅ 各部分职责
+模块	负责内容	示例文件
+网络层（net）	建立连接、接收消息、发送消息	TcpServer.cpp
+协议层（protocol）	消息解析/封装（如 Protobuf）	MessageCodec.h
+服务层（service）	登录、注册、注销、聊天等业务逻辑	AuthService.cpp
+数据层（model）	操作数据库，如用户查找、验证密码	UserModel.cpp
+
+Client ----> TcpServer::onNewConnection()  ✅【网络层】
+                 |
+                 v
+          MessageCodec::decode()          ✅【协议层】
+                 |
+                 v
+         AuthService::login()/register()  ✅【业务层】
+                 |
+                 v
+         UserModel::checkPassword()       ✅【数据库层】
+
+ChatRoomProject/
+├── CMakeLists.txt                            # 顶层 CMake 构建脚本
+├── README.md                                 # 项目说明文档
+
+├── proto/                                    # Protobuf 协议定义
+│   └── chat.proto                            # 定义 LoginRequest、ChatMessage 等消息格式
+
+├── client/                                   # 客户端代码
+│
+│   ├── CMakeLists.txt                        # 客户端子项目构建脚本
+│   ├── main.cpp                              # 客户端入口
+│
+│   ├── Client.h                              # 客户端类声明：连接、发送、接收
+│   ├── Client.cpp                            # 客户端类实现
+│
+│   ├── AuthHandler.h                         # 登录/注册消息发送类声明
+│   ├── AuthHandler.cpp                       # 登录/注册功能实现
+│
+│   ├── MessageHandler.h                      # 接收服务器消息并分发处理
+│   ├── MessageHandler.cpp
+│
+│   ├── net/                                  # 网络通信封装
+│   │   ├── ClientConnection.h                # 客户端连接管理类
+│   │   └── ClientConnection.cpp
+│
+│   ├── codec/                                # 协议编解码层
+│   │   ├── MessageCodec.h                    # 编解码器接口
+│   │   └── MessageCodec.cpp
+│
+│   └── UI/                                   # 终端或GUI界面
+│       ├── ChatInterface.h                   # 聊天主界面（命令行输入输出）
+│       └── ChatInterface.cpp
+
+├── server/                                   # 服务端代码
+│
+│   ├── CMakeLists.txt                        # 服务端子项目构建脚本
+│   ├── main.cpp                              # 服务器入口（初始化TcpServer）
+│
+│   ├── net/                                  # 网络层（socket + epoll）
+│   │   ├── TcpServer.h                       # 监听socket封装
+│   │   ├── TcpServer.cpp
+│   │   ├── TcpConnection.h                   # 每个客户端连接对象
+│   │   ├── TcpConnection.cpp
+│   │   ├── EventLoop.h                       # 简易事件循环封装
+│   │   └── EventLoop.cpp
+│
+│   ├── controller/                           # 业务控制层
+│   │   ├── AuthService.h                     # 登录、注册、注销业务逻辑
+│   │   ├── AuthService.cpp
+│   │   ├── ChatService.h                     # 私聊、转发、离线消息
+│   │   ├── ChatService.cpp
+│   │   ├── FriendService.h                   # 好友添加/查询逻辑
+│   │   ├── FriendService.cpp
+│   │   ├── GroupService.h                    # 群组创建、群聊逻辑
+│   │   └── GroupService.cpp
+│
+│   ├── model/                                # 数据模型层（数据库操作）
+│   │   ├── UserModel.h                       # 用户表操作（验证登录）
+│   │   ├── UserModel.cpp
+│   │   ├── FriendModel.h                     # 好友关系增删查
+│   │   ├── FriendModel.cpp
+│   │   ├── GroupModel.h                      # 群组管理
+│   │   ├── GroupModel.cpp
+│   │   ├── OfflineMsgModel.h                 # 离线消息保存、拉取
+│   │   └── OfflineMsgModel.cpp
+│
+│   ├── codec/                                # 协议解析层（Protobuf 解码）
+│   │   ├── MessageDispatcher.h               # 路由 dispatcher
+│   │   ├── MessageDispatcher.cpp
+│   │   ├── MessageCodec.h                    # 接口封装
+│   │   └── MessageCodec.cpp
+│
+│   ├── config/                               # 配置文件加载
+│   │   ├── Config.h                          # 加载配置（如端口、数据库）
+│   │   ├── Config.cpp
+│   │   └── config.json                       # 配置文件（port、mysql 等）
+│
+│   └── common/                               # 工具类与基础组件
+│       ├── Logger.h                          # 日志系统
+│       ├── Logger.cpp
+│       ├── Utils.h                           # 常用工具函数
+│       └── Utils.cpp
+
+├── database/                                 # 数据库设计与脚本
+│   ├── init.sql                              # 初始化建表 SQL 脚本
+│   └── README.md                             # 数据库说明文档
+
+├── build/                                    # 编译生成目录（建议 .gitignore）
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ChatRoomProject/
+├── CMakeLists.txt
+├── README.md
+
+├── proto/
+│   └── chat.proto                     # 定义 LoginRequest, ChatMessage 等 Protobuf 消息
+
+├── client/
+│   ├── main.cpp                       # 客户端启动入口
+│   ├── Client.h / .cpp                # 客户端主逻辑：连接、消息收发
+│   ├── AuthHandler.h / .cpp           # 登录/注册/注销逻辑（发送请求）
+│   ├── MessageHandler.h / .cpp        # 聊天消息接收和响应处理
+│   ├── net/
+│   │   └── ClientConnection.h / .cpp  # socket 连接封装
+│   ├── codec/
+│   │   └── ProtoCodec.h / .cpp        # Protobuf 编解码
+│   └── UI/
+│       └── ChatInterface.h / .cpp     # 命令行聊天界面
+
+├── server/
+│   ├── main.cpp                       # 服务端启动入口（初始化 socket、Redis 等）
+│
+│   ├── net/
+│   │   ├── TcpServer.h / .cpp         # 多客户端连接监听
+│   │   ├── TcpConnection.h / .cpp     # 单个连接读写封装
+│   │   └── EventLoop.h / .cpp         # 事件驱动循环
+│
+│   ├── controller/
+│   │   ├── AuthService.h / .cpp       # 处理登录、注册、注销
+│   │   └── ChatService.h / .cpp       # 私聊、群聊、离线转发等
+│
+│   ├── redis/
+│   │   ├── RedisClient.h / .cpp       # Redis 封装类
+│   │   └── RedisKeys.h                # Redis key 命名规范定义（常量）
+│
+│   ├── codec/
+│   │   └── ProtoDispatcher.h / .cpp   # Protobuf 消息路由器
+│
+│   ├── config/
+│   │   ├── Config.h / .cpp            # Redis 主机、端口配置
+│   │   └── config.json
+│
+│   └── common/
+│       ├── Logger.h / .cpp
+│       └── Utils.h / .cpp
+
+├── third_party/
+│   └── redis++/                       # Redis++ 或 hiredis 库（你用哪种放哪种）
+
+├── scripts/
+│   └── proto_compile.sh               # 一键生成 Protobuf C++ 文件的脚本
+
+├── build/                             # 构建输出目录
+
+
+chatserver/
+├── CMakeLists.txt
+├── main.cpp
+├── core/
+│   ├── master.hpp / master.cpp     # Accept + 分发 worker
+│   ├── worker.hpp / worker.cpp     # 每个 worker epoll
+│   ├── connection.hpp / connection.cpp  # 每个 fd 的上下文
+│   ├── usermanager.hpp / usermanager.cpp # 用户管理
+│   ├── roommanager.hpp / roommanager.cpp # 群聊管理
+│   ├── messagecenter.hpp / messagecenter.cpp # 消息中心
+│   ├── protocol.hpp / protocol.cpp # 协议封包解析
+│   └── common.hpp                  # 公共宏 / 工具
+└── include/
+    └── config.hpp                  # 端口、常量配置
+
++----------------+
+|    Master      |
+|----------------|
+| accept()       |
+| distribute()   |
++----------------+
+        |
+        v
++----------------+
+|    Worker      | 1-N
+|----------------|
+| epoll          |
+| handle fd      |
+| hand_io()      |
+| notify via pipe|
++----------------+
+        |
+        v
++----------------+
+|  Connection    | fd -> user_id
+|----------------|
+| recv_buffer    |
+| user_id        |
+| last_alive     |
++----------------+
+        |
+        v
++----------------+
+| Protocol       |
+|----------------|
+| unpack()       |
+| pack()         |
+| heartbeat chk  |
++----------------+
+
+-----------------------------
+| Worker -> MessageCenter -> |
+| UserManager / RoomManager  |
+-----------------------------
+
++----------------+
+| MessageCenter  |
+|----------------|
+| dispatch()     |
+| route to worker|
+| route to group |
++----------------+
+      |                 |
++------------+    +----------------+
+|UserManager |    |  RoomManager   |
+| fd <-> id  |    | room -> user   |
++------------+    +----------------+

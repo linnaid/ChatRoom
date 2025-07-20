@@ -1,0 +1,29 @@
+syntax = "proto3";
+package contacts3;
+
+import "google/protobuf/any.proto";
+
+message Address {
+    string home_address = 1;
+    string unit_address = 2;
+    
+}
+
+message PeopleInfo{
+    string name = 1; // 姓名
+    int32 age = 2; // 年龄
+    message Phone{
+        string number = 1;
+        enum PhoneType {
+            MP = 0; // 移动电话
+            TEL = 1; // 固定电话
+        }
+        PhoneType type = 2;
+    }
+    repeated Phone phone = 3; // 电话号码
+    google.protobuf.Any data = 4;
+}
+
+message Contacts{
+    repeated PeopleInfo contacts = 1;
+}
