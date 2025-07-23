@@ -16,11 +16,14 @@
 #include <mutex>
 #include <memory>
 #include <unordered_map>
+#include <iomanip>
 
 
 
-
+#define IP "127.0.0.1"
 #define NUM 8
 #define MAX_EVENT 20
-#define PORT 9090
+#define PORT1 8080
+#define PORT2 9090
 #define MAX_NUM 1024
+#define WORKER 10
