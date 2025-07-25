@@ -2,10 +2,12 @@
 
 #include "include.h"
 #include "user_auth.pb.h"
+#include "user_page.h"
+#include "Clear.hpp"
 
+extern std::string _username;
 
-#define IP "127.0.0.1"
-#define PORT 8080
+class auth_Page;
 
 class UserAuth_c{
 public:
@@ -28,7 +30,7 @@ private:
     int _port;
     bool log_i;
     int a;
+    std::string _user;
     std::string _ip;
-    std::string _username;
     sockaddr_in _cli;
 };
