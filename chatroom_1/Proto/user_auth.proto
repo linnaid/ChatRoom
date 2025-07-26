@@ -30,6 +30,7 @@ message Register_Ver{
     string email_msg = 1;
     bool decide = 2;
     string time = 3;
+    string username = 4;
 }
 
 message Login_Ver{
@@ -62,7 +63,7 @@ message LogInRequest{
 }
 
 message LogInResponse{
-    bool decide = 1;
+    int32 decide = 1;
 }
 
 message LogoutResquest{

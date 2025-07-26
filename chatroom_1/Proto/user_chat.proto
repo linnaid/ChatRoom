@@ -1,20 +1,138 @@
 syntax = "proto3";
 package chat;
 
+enum Actions {
+    LOGIN = 0;
+    // 登陆重复
+    UNLOGIN = 15;
+    GROUPMSG = 1;
+    GROUPNTF = 2;
+    ADDFDREQ = 3;
+    ADDFDRES = 4;
+    HEART = 5;
+    FDLIST = 6;
+    FRIENDMSG = 7;
+    USERNTF = 8;
+    UNUSERNTF = 9;
+    DELFDREQ = 10;
+    DELFDRES = 11;
+    RESPONSE = 12;
+    OFFLINEMSG = 13;
+    // 在刚开始就更新好友；
+    LOGINLIST = 14;
+    // 屏蔽好友
+    BLOCKFRIEND = 16;
+    UNBLOCKFRIEND = 17;
+}
 
+enum Statues_line{
+    OFFLINE = 0;
+    ONLINE = 1;
+    BUSY = 2;
+};
 
-message ChatMessage {
+enum Statues_friend {
+    WAITING = 0;
+    ACCEPT = 1;
+    REJECT = 2;
+}
+
+message Chat {
+    Actions action = 1;
+    FriendChatMessage chat_fd = 2;
+    GroupChatMessage group_notify = 3;
+    AddFriendRequest friend_req = 4;
+    AddFriendResponse friend_res = 5;
+    FriendLists friends = 6;
+    UserRequest req = 7;
+    Login log = 8;
+    string heart = 9;
+    DeleteFriendRequest friend_del_req = 10;
+    DeleteFriendResponse friend_del_res = 11;
+    LoginResponse response = 12;
+    OfflineMSG off_msg = 13;
+    BlockFriend block_friend = 14;
+}
+
+message BlockFriend {
+    string name = 1;
+}
+
+message OfflineMSG {
+    repeated string msg = 1;
+    string name = 2;
+    string username = 3;
+}
+
+message UserRequest {
+    string username = 1;
+    map<string, string> result = 3;
+}
+
+message Login {
+    bool login = 2;
+    string username = 1;
+}
+
+message LoginResponse {
+    string username = 1;
+    map<string, string> result = 2;
+}
+
+message DeleteFriendResponse {
+    bool result = 1;
+    string username = 2;
+}
+
+message DeleteFriendRequest {
+    string from_name = 1;
+    string to_name = 2;
+    string time = 3;
+}
+
+message AddFriendRequest {
+    string from_username = 1;
+    string to_username = 2;
+    string time = 3;
+}
+
+message AddFriendResponse {
+    bool decide = 1;
+    string from_name = 2;
+    string to_name = 3;
+    string msg = 4;
+    string time = 5;
+}
+
+message FriendLists {
+    map<string, bool> friends = 1;
+    string name = 2;
+}
+
+message FriendStatueRequest {
+    string friend_name = 1;
+    Statues_line statue = 2;
+}
+
+message FriendRequestNotification {
+    string from_username = 1;
+    string to_username = 2;
+    Statues_friend statue = 3;
+}
+
+message FriendChatMessage {
     string from_name = 1;
     string to_name = 2;
     string message = 3;
     string time = 4;
+    bool block = 5;
 }
 
 message GroupChatMessage {
     string group_name = 1;
     string from_member = 2;
     string message = 3;
-    string tine = 4;
+    string time = 4;
 }
 
 message GroupNotification {
