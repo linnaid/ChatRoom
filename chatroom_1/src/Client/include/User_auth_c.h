@@ -11,7 +11,7 @@ class auth_Page;
 
 class UserAuth_c{
 public:
-    UserAuth_c();
+    UserAuth_c(int argc, char** argv);
     ~UserAuth_c();
     void init();
 private:
