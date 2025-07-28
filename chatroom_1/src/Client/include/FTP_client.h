@@ -1,16 +1,7 @@
 #pragma once
 
-#include <iostream>
-#include <sys/socket.h>
-#include <unistd.h>
-#include <netinet/in.h>
-#include <string.h>
-#include <vector>
-#include <thread>
-#include <arpa/inet.h>
-#include <fstream>
-#include <filesystem>
-
+#include "protocol.h"
+#include "user_chat.pb.h"
 #include "include.h"
 
 

@@ -33,6 +33,19 @@ enum class Actions {
     QUIT = 0
 };
 
+enum class Group {
+    ADDGROUP = 1,
+    DISBANDGROUP = 2,
+    JOINGROUP = 3,
+    LEAVEGROUP = 4,
+    GROUPLIST = 5,
+    GROUPMEMBERS = 6,
+    ADDADMINISTRATOR = 7,
+    DELADMINISTRATOR = 8,
+    DECIDEADDGROUP = 9,
+    CHATMSG = 10
+};
+
 class friend_Page;
 class Clear;
 
@@ -132,8 +145,8 @@ private:
     bool _main_run;
     std::thread t1;
     std::thread t2;
-    std::thread file1;
-    std::thread file2;
+    // std::thread file1;
+    // std::thread file2;
     std::thread main_t1;
     std::thread main_t2;
     int choice;
@@ -148,4 +161,5 @@ private:
     std::unordered_map<std::string, bool> friedns_online;
     std::unordered_set<std::string> friends_block;
     std::unordered_set<std::string> friends_by_block;
+    std::unordered_map<std::string, std::vector<std::string>> friends_files;
 };
