@@ -1,3 +1,6 @@
+#pragma once
+
+
 #include <iostream>
 #include <sys/socket.h>
 #include <fcntl.h>
@@ -17,13 +20,23 @@
 #include <memory>
 #include <unordered_map>
 #include <iomanip>
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <fstream>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <condition_variable>
+#include <cstring>
+#include <filesystem>
 
 
+extern std::string IP;
 
-#define IP "127.0.0.1"
 #define NUM 8
 #define MAX_EVENT 20
 #define PORT1 8080
 #define PORT2 9090
+#define PORT3 2100
 #define MAX_NUM 1024
 #define WORKER 10

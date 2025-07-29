@@ -4,7 +4,12 @@
 #include "user_chat.pb.h"
 #include "RedisClient.h"
 #include "WorkerServer.h"
+#include "user_page.h"
+#include "messageCenter.h"
 
+extern std::unordered_map<int, int> Worker_fd;
+
+class Worker;
 
 class Master{
 public:
@@ -12,16 +17,18 @@ public:
     ~Master();
     void init();
     void run();
-    void distribute_worker(int& cli);
-
+    
 private:
+    void distribute_worker(int cli_fd);
     int make_nonblocking(int sockfd);
     void accept_client();
 
     RedisClient _redis;
     int _port;
-    int cli_fd;
     int _worker;
+    //////////////////////////// 这里也可以有IP
+    std::string _ip;
     int epoll_master;
-    std::vector<std::unique_ptr<Worker>> workers;
+    int listen_sockfd;
+    std::vector<std::shared_ptr<Worker>> workers;
 };

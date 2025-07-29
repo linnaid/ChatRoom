@@ -33,17 +33,27 @@ enum class Actions {
     QUIT = 0
 };
 
-enum class Group {
+enum Group {
     ADDGROUP = 1,
+    JOINGROUP = 2,
+    MANAGEGROUP = 3,
+    GROUPLIST = 4,
+    FINDREQ = 5,
+    QUIT = 0
+};
+
+enum class ManageGroups {
+    // ADDGROUP = 1,
     DISBANDGROUP = 2,
-    JOINGROUP = 3,
+    // JOINGROUP = 3,
     LEAVEGROUP = 4,
-    GROUPLIST = 5,
+    // GROUPLIST = 5,
     GROUPMEMBERS = 6,
     ADDADMINISTRATOR = 7,
     DELADMINISTRATOR = 8,
     DECIDEADDGROUP = 9,
-    CHATMSG = 10
+    CHATMSG = 10,
+    QUIT = 0
 };
 
 class friend_Page;
@@ -65,12 +75,15 @@ private:
 
     void runGroup();
 
+    void runGroups();
+
     void main_run();
 
     void send_login();
 
     bool Send(const std::string& buf);
 
+    // 以下是对好友的函数处理：
     void send_add_friend();
 
     void recv_add_friend(const chat::Chat& chat_msg);
@@ -113,10 +126,7 @@ private:
     
     void print_send_file(const chat::Chat& chat_msg);
     
-    void print_look_file(const chat::Chat& chat_msg);
-    
-    void print_recv_file(const chat::Chat& chat_msg);
-    
+    void print_look_file(const chat::Chat& chat_msg);    
 
     void save_friends(const chat::Chat& chat_msg);
 
@@ -138,6 +148,26 @@ private:
     void decide_add_friend(const std::string& to_name, int select);
     void delete_add_friend(const std::string& name);
 
+    // 以下是对群函数的处理
+    void send_add_group();
+
+    void join_group();
+
+    void group_list();
+
+    void group_request();
+
+    
+
+    void recv_add_group(const chat::Chat& chat_msg);
+
+    void print_join_group(const chat::Chat& chat_msg);
+
+    void decide_join_group(const chat::Chat& chat_msg);
+
+    void print_group_list(const chat::Chat& chat_msg);
+
+
     int _sockfd;
     bool _running;
     bool _running_recv;
@@ -145,12 +175,12 @@ private:
     bool _main_run;
     std::thread t1;
     std::thread t2;
-    // std::thread file1;
-    // std::thread file2;
     std::thread main_t1;
     std::thread main_t2;
     int choice;
     Actions action;
+    Group group;
+    ManageGroups groups;
     Select select;
     std::string _ip;
     std::string msg;
@@ -158,8 +188,11 @@ private:
     sockaddr_in _fd;
     std::vector<std::string> friend_res;
     std::unordered_set<std::string> friends;
-    std::unordered_map<std::string, bool> friedns_online;
+    // std::unordered_map<std::string, bool> friedns_online;
     std::unordered_set<std::string> friends_block;
     std::unordered_set<std::string> friends_by_block;
     std::unordered_map<std::string, std::vector<std::string>> friends_files;
+    std::unordered_set<std::string> usergroups;
+
+
 };

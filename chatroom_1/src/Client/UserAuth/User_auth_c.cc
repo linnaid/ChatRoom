@@ -1,12 +1,20 @@
 #include "User_auth_c.h"
 
-UserAuth_c::UserAuth_c():
-_port(PORT),
+std::string _username;
+
+UserAuth_c::UserAuth_c(int argc, char** argv):
+_port(PORT1),
 _sockfd(-1),
-_ip(IP),
 a(1),
 log_i(false)
-{}
+{
+    if(argc == 3) {
+        IP = argv[1];
+        _ip = IP;
+    } else{
+        _ip = IP;
+    }
+}
 
 UserAuth_c::~UserAuth_c(){
     if(_sockfd >= 0)
@@ -20,19 +28,48 @@ void UserAuth_c::init(){
         perror("sockfd-make ERROR!!!");
         exit(1);
     }
+    // std::cout << _port << std::endl;
+    // std::cout << _ip << std::endl;
     _cli.sin_family = AF_INET;
     _cli.sin_port = htons(_port);
     ::inet_pton(AF_INET, _ip.c_str(), &_cli.sin_addr.s_addr);
-    connect(_sockfd, (sockaddr*)&_cli, sizeof(_cli));
+    if(connect(_sockfd, (sockaddr*)&_cli, sizeof(_cli)) < 0) {
+        std::cerr << "connect error" << std::strerror(errno) << std::endl;
+        return;
+    }
     run();
 }
 
 void UserAuth_c::run(){
     // char buf[1024];
     std::string buf;
+    int decide;
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
     while(true){
-        std::cin >> buf;
-        GOOGLE_PROTOBUF_VERIFY_VERSION;
+        auth_Page::Start();
+        std::cin >> decide;
+        // std::cout << decide << std::endl;
+        if(decide == 1) {
+            buf = "login";
+            // std::cout << buf << std::endl;
+        } else if(decide == 2) {
+            buf = "register";
+        } else if (std::cin.fail()){
+            Clear::clearScreen();
+            std::cout << "\033[1;31m输入错误,请重新输入:\033[0m" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        } else if(decide == 0) {
+            buf = "QUIT";
+        } else {
+            Clear::clearScreen();
+            std::cout << "\033[1;31m输入错误,请重新输入:\033[0m" << std::endl;
+            // std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
+        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         auth::Auth auth_msg;
         auth_msg.set_msg(buf);
         std::string buffer;
@@ -46,15 +83,18 @@ void UserAuth_c::run(){
         ssize_t a = send(_sockfd, packet_msg.data(), packet_msg.size(), 0);
         if(a < 0){
             perror("Send ERROR");
+        } else if(a == 0) {
+            std::cout << "服务器关闭连接" << std::endl;
+            return;
         }
         if(strcmp(buf.data(), "QUIT") == 0){
             break;
         }
         char buff[1024];
         ssize_t b = recv(_sockfd, buff, sizeof(buff), 0);
-        std::cout << buff << std::endl;
+        // std::cout << buff << std::endl;
         std::string ser_user;
-        if(strcmp(buff, "Please enter your user_message:") == 0){
+        if(strncmp(buff, "Please enter your user_message:", strlen("Please enter your user_message:")) == 0){
             ser_user = Register_u();
             len = htonl(ser_user.size());
             // std::string packet_reg(reinterpret_cast<char*>(len), 4);
@@ -64,7 +104,7 @@ void UserAuth_c::run(){
             packet_reg += ser_user;
             send(_sockfd, packet_reg.data(), packet_reg.size(), 0);
             if(!register_Ver()) continue;
-        }else if(strcmp(buff, "Please enter your message:") == 0){
+        }else if(strncmp(buff, "Please enter your message:", strlen("Please enter your message:")) == 0){
             ser_user = LogIn();
             len = htonl(ser_user.size());
             std::string packet_log;
@@ -87,11 +127,13 @@ bool UserAuth_c::register_Ver(){
     auth::Auth auth_recv;
     char buff[1024];
     ssize_t a = recv(_sockfd, buff, sizeof(buff), 0);
-    if(!auth_recv.ParseFromString(buff)){
+    std::string msg(buff, a);
+    if(!auth_recv.ParseFromString(msg)){
         std::cerr << "Parse error" << std::endl;
     }
     if(!auth_recv.res().decide()){
         std::cout << "Register failedssss" << std::endl;
+        _user = "";
         return false;;
     }
     auth::Auth auth_msg;
@@ -105,19 +147,26 @@ bool UserAuth_c::login_Ver(){
         auth::Auth auth_recv;
         char buff[1024];
         ssize_t a = recv(_sockfd, buff, sizeof(buff), 0);
-        if(!auth_recv.ParseFromString(buff)){
-            std::cerr << "Parse error" << std::endl;
+        std::string msg(buff, a);
+        // std::cout << buff << std::endl;
+        if(!auth_recv.ParseFromString(msg)){
+            // std::cerr << "Parse error." << std::endl;
             return false;
         }
-        if(!auth_recv.los().decide()){
-            std::cout << "Login Failed." << std::endl;
-            _username = nullptr;
+        std::cout << auth_recv.los().decide() << std::endl;
+        if(auth_recv.los().decide() == 0){
+            std::cout << "\033[31m用户不存在,请注册\033[0m" << std::endl;
+            _username = "";
             return false;
-        } else {
-            std::cout << "Login Successful." << std::endl;
+        } else if (auth_recv.los().decide() == 2) {
+            std::cout << "\033[31m密码错误\033[0m" << std::endl;
+            _username = "";
+        } else if(auth_recv.los().decide() == 1) {
+            std::cout << "\033[34m登陆成功\033[0m" << std::endl;
             log_i = true;
             return true;
         }
+        return false;
     }
     auth::Auth auth_msg;
     auth_msg.set_action(auth::actions::LVERIFY);
@@ -129,11 +178,12 @@ void UserAuth_c::get_verify(auth::Auth& auth_msg, int type){
     uint32_t len;
     std::string input;
     // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cout << "Please enter your verification:";
+    std::cout << "\033[34m请输入验证码:\033[0m";
     getline(std::cin, input);
     if(type == 1) {
         auth::Register_Ver* ver = auth_msg.mutable_r_ver();
         ver->set_email_msg(input);
+        ver->set_username(_user);
     } else if(type == 2) {
         auth::Login_Ver* ver = auth_msg.mutable_l_ver(); 
         ver->set_email_msg(input);
@@ -147,12 +197,12 @@ void UserAuth_c::get_verify(auth::Auth& auth_msg, int type){
     msg.resize(4);
     memcpy(&msg[0], &len, 4);
     msg += input;
-    send(_sockfd, msg.c_str(), msg.size(), 0);
+    send(_sockfd, msg.data(), msg.size(), 0);
 }
 
 void UserAuth_c::Parse_u(const std::string& buf){
     auth::Auth auth_msg;
-    std::cout << buf << std::endl;
+    // std::cout << buf << std::endl;
     if(!auth_msg.ParseFromString(buf)){
         std::cerr << "Parse error111" << std::endl;
     }
@@ -167,45 +217,61 @@ void UserAuth_c::Parse_u(const std::string& buf){
 }
 
 void UserAuth_c::L_check(auth::Auth& auth_msg){
+    std::cout << "sss"<< std::endl;
     if(auth_msg.l_ver().decide()){
-        std::cout << "Login successful." << std::endl;
+        std::cout << "\033[34m登陆成功\033[0m" << std::endl;
         log_i = true;
     } else{
-        _username = nullptr;
-        std::cout << "Login failed." << std::endl;
+        _username = "";
+        std::cout << "\033[31m登陆失败\033[0m" << std::endl;
     }
 }
 
 void UserAuth_c::R_check(auth::Auth& auth_msg){
     if(auth_msg.r_ver().decide()){
-        std::cout << "Registration successful." << std::endl;
+        std::cout << "\033[36m注册成功！\033[0m" << std::endl;
         // std::cout << "your_id:" << sp.user_id() << std::endl;
-        std::cout << "Registration time:" << std::endl;
+        std::cout << "\033[34m你的注册时间为:\033[0m" << std::endl;
         std::cout << auth_msg.r_ver().time() << std::endl;
     } else{
-        std::cout << "Registration failed." << std::endl;
+        std::cout << "\033[31m啊哦，注册失败" << std::endl <<"记住，用户名不能重复！邮箱要有效！验证码要输对！\033[0m" << std::endl;
     }
 }
 
 // 实现注册的序列化
 std::string UserAuth_c::Register_u(){
-
+    
     auth::Auth auth_msg;
     auth_msg.set_action(auth::actions::REGISTER);
     auth::RegisterRequest* req = auth_msg.mutable_req();
     std::string input;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    std::cout << "Please enter your username:";
+    std::cout << "\033[34m请输入你的用户名:\033[0m";
     getline(std::cin, input);
+    if(input == "quit" || input == "QUIT") {
+        std::cout << "\033[31m用户名不能为<quit>/<QUIT>!\033[0m" << std::endl;
+        std::cout << "\033[34m请重新输入用户名:\033[0m" << std::endl;
+        while(true) {
+            getline(std::cin, input);
+            if(input == "quit" || input == "QUIT") {
+                std::cout << "\033[31m用户名不能为<quit>/<QUIT>!\033[0m" << std::endl;
+                std::cout << "\033[34m请重新输入用户名:\033[0m" << std::endl;
+            } else {
+                break;
+            }
+        }
+
+    }
     req->set_username(input);
-    std::cout << "Please enter your password:";
+    _user = input;
+    std::cout << "\033[34m请输入你的密码:\033[0m";
     getline(std::cin, input);
     req->set_password(input);
-    std::cout << "Please enter your email:";
+    std::cout << "\033[34m请输入你的邮箱:\033[0m";
     getline(std::cin, input);
-    req->set_email(input);
-    std::cout << "Please enter your phone:";
+     req->set_email(input);
+    std::cout << "\033[34m请输入你的移动电话:\033[0m";
     getline(std::cin, input);
     req->set_phone(input);
 
@@ -226,24 +292,34 @@ std::string UserAuth_c::LogIn(){
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::string input;
     
-    std::cout << "Please enter your username:";
+    std::cout << "\033[34m请输入你的用户名:\033[0m";
     getline(std::cin, input);
     loq->set_username(input);
     _username = input;
-    std::cout << "Username + Password(1)    Username + email(2)" << std::endl;
-    std::cout << "Please select your login method: ";
-    std::cin >> a;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    if(a == 1) {
-        std::cout << "Please enter your password:";
-        getline(std::cin, input);
-        loq->set_password(input);
-        loq->set_select(auth::Select::PASSWORD);
-    } else if(a == 2) {
-        std::cout << "Please enter your email:";
-        getline(std::cin, input);
-        loq->set_email(input);
-        loq->set_select(auth::Select::EMAIL);
+    std::cout << "\033[34m密码登陆(1)    验证码登陆(2)\033[0m" << std::endl;
+    std::cout << "\033[34m请作出你的选择:\033[0m";
+    while(true) {
+        std::cin >> a;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        if(a == 1) {
+            std::cout << "\033[34m请输入你的密码:\033[0m";
+            getline(std::cin, input);
+            loq->set_password(input);
+            loq->set_select(auth::Select::PASSWORD);
+            break;
+        } else if(a == 2) {
+            std::cout << "\033[34m请输入你的邮箱:\033[0m";
+            getline(std::cin, input);
+            loq->set_email(input);
+            loq->set_select(auth::Select::EMAIL);
+            break;
+        } else {
+            Clear::clearScreen();
+            std::cout << "\033[1;31m输入错误,请重新输入:\033[0m" << std::endl;
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            continue;
+        }
     }
     std::string user_loq;
     if(!auth_msg.SerializeToString(&user_loq)){

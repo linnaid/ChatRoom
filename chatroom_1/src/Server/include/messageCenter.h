@@ -2,6 +2,8 @@
 
 #include "include.h"
 #include "WorkerServer.h"
+#include "user_page.h"
+#include "MasterServer.h"
 
 class Worker;
 

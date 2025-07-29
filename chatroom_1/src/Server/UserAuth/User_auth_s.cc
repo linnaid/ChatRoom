@@ -5,6 +5,7 @@ _port(port),
 listen_sockfd(-1),
 _epoll(-1),
 flag(false),
+_ip(IP),
 redis_("tcp://127.0.0.1:6379")
 {}
 
@@ -31,7 +32,8 @@ void UserAuth_s::init(){
     sock.sin_family = AF_INET;
     sock.sin_addr.s_addr = INADDR_ANY;
     sock.sin_port = htons(_port);
-    
+    std::cout << _port << std::endl;
+    std::cout << _ip << std::endl;
     // 即使端口处于 TIME_WAIT 状态，我也想重用它～
     int opt = 1;
     setsockopt(listen_sockfd, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
@@ -44,6 +46,8 @@ void UserAuth_s::init(){
         perror("set_listen ERROR!!!");
         exit(1);
     }
+    
+    run();
 }
 
 void UserAuth_s::run(){
@@ -129,48 +133,57 @@ void UserAuth_s::onMessage(int cli){
 
 // 验证码识别
 void UserAuth_s::R_check(int cli, const auth::Auth& auth_msg){
-    std::string buf = std::to_string(cli);
+    std::string buf = auth_msg.r_ver().username();
     std::cout << auth_msg.r_ver().email_msg() << std::endl;
+
+    auth::Auth auth_res;
+    auth_res.set_action(auth::actions::RVERIFY);
+    auth::Register_Ver* ver = auth_res.mutable_r_ver();
+    std::string time = GetNowTime();
+    ver->set_time(time);
+
     if(auth_msg.r_ver().email_msg() == redis_.userFieldExists(buf)){
         std::cout << "Registration Successful." << std::endl;
-        auth::Auth auth_res;
-        auth_res.set_action(auth::actions::RVERIFY);
-        auth::Register_Ver* ver = auth_res.mutable_r_ver();
         ver->set_decide(true);
-        std::string time = GetNowTime();
-        ver->set_time(time);
-        if(!auth_res.SerializeToString(&buf)){
-            std::cerr << "Serialize error" << std::endl;
-            std::cout << "Registration Failed." << std::endl;
-        } else {
-            Send(cli, buf);
-        }
     } else {
         std::cout << "Registration Failed." << std::endl;
+        redis_.deleteHashKey(auth_msg.r_ver().username());
+        ver->set_decide(false);
+    }
+
+    if(!auth_res.SerializeToString(&buf)){
+        std::cerr << "Serialize error" << std::endl;
+        std::cout << "Registration Failed." << std::endl;
+    } else {
+        Send(cli, buf);
     }
 }
 
 void UserAuth_s::L_check(int cli, const auth::Auth& auth_msg){
-    std::string buf = std::to_string(cli);
+    std::string buf = auth_msg.l_ver().username();
+
+    auth::Auth auth_res;
+    auth_res.set_action(auth::actions::LVERIFY);
+    auth::Login_Ver* ver = auth_res.mutable_l_ver();
+    std::string time = GetNowTime();
+    ver->set_time(time);
+
     if(redis_.userFieldExists(buf) == auth_msg.l_ver().email_msg()){
         std::cout << "Number " << cli << " Login Successful." << std::endl;
         redis_.addUserToOnlineLists(auth_msg.l_ver().username());
-        auth::Auth auth_res;
-        auth_res.set_action(auth::actions::LVERIFY);
-        auth::Login_Ver* ver = auth_res.mutable_l_ver();
         ver->set_decide(true);
-        std::string time = GetNowTime();
-        ver->set_time(time);
-        std::string send_buf;
-        if(!auth_res.SerializeToString(&send_buf)){
-            std::cerr << "Serialize error" << std::endl;
-            std::cout << "Login Failed." << std::endl;
-        } else {
-            std::cout << "buf: " << send_buf;
-            Send(cli, send_buf);
-        }
     } else {
         std::cout << "Login Failed." << std::endl;
+        ver->set_decide(false);
+    }
+
+    std::string send_buf;
+    if(!auth_res.SerializeToString(&send_buf)){
+        std::cerr << "Serialize error" << std::endl;
+        std::cout << "Login Failed." << std::endl;
+    } else {
+        std::cout << "buf: " << send_buf;
+        Send(cli, send_buf);
     }
 }
 
@@ -202,7 +215,7 @@ void UserAuth_s::Process(int cli, const std::string& buf){
 }
 
 // 发送验证码
-void UserAuth_s::Send_verify(const std::string& userid, const std::string& email){
+void UserAuth_s::Send_verify(const std::string& username, const std::string& email){
     MailSender sender("smtps://smtp.qq.com:465",
                       "jiaguoyangyang@qq.com",
                       "aauzmklxescgdbjb");
@@ -216,9 +229,9 @@ void UserAuth_s::Send_verify(const std::string& userid, const std::string& email
     std::cout << "send_verification successful" << std::endl;
     } else {
         std::cout << "send_verification Failed" << std::endl;
-        return;
+        // return;
     }
-    redis_.setKeyExpire(userid, code, 300);
+    redis_.setKeyExpire(username, code, 300);
 }
 
 // 生成验证码
@@ -253,7 +266,7 @@ void UserAuth_s::Register_R(int cli, const auth::Auth& auth_msg){
     std::string buf = Ser_R(a, msg);
     Send(cli, buf);
 
-    buf = std::to_string(cli);
+    buf = req.username();
     if(a) Send_verify(buf, req.email());
 
 }
@@ -293,31 +306,42 @@ void UserAuth_s::LogIn(int cli, const auth::Auth& auth_msg){
     std::string ser_l;
     // std::string u_name = "user:" + loq.username();
     if(auth_msg.loq().select() == auth::Select::PASSWORD){
+        int32_t b = 0;
         if(redis_.userFieldHexists(loq.username(), "password")){
             auto u_pass = redis_.getUserField(loq.username(), "password");
             if(u_pass == loq.password()){
                 std::cout << "Number " << cli << " login successful." << std::endl;\
                 redis_.addUserToOnlineLists(loq.username());
-                ser_l = Ser_L();
-                Send(cli, ser_l);
+                b = 1;
             } else {
-                ser_l = "Password Error";
+                ser_l = "\033[31m密码错误\033[0m";
+                std::cout << ser_l << std::endl;
+                b = 2;
             }
         } else {
-            ser_l = "User does not exist. Please register.";
+            ser_l = "\033[31m用户不存在,请注册\033[0m";
+            std::cout << ser_l << std::endl;
+            b = 0;
         }
+        // std::cout << "b:" << b << std::endl;
+        ser_l = Ser_L(b);
+        // std::cout << ser_l << std::endl;
+        Send(cli, ser_l);
     } else {
-        ser_l = std::to_string(cli);
-        Send_verify(ser_l, auth_msg.loq().email());
+        Send_verify(loq.username(), auth_msg.loq().email());
     }
 }
 
-std::string UserAuth_s::Ser_L(){
+std::string UserAuth_s::Ser_L(int32_t b){
+        // std::cout << "b:" << b << std::endl;
     auth::Auth auth_msg;
     auth_msg.set_action(auth::actions::LOGIN);
     auth::LogInResponse* los = auth_msg.mutable_los();
-    los->set_decide(true);
+    los->set_decide(b);
     std::string s;
+    auth_msg.SerializeToString(&s);
+    auth_msg.ParseFromString(s);
+    // std::cout << "decide:" << auth_msg.los().decide() << std::endl;
     auth_msg.SerializeToString(&s);
     return s;
 }

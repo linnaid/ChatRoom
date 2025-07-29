@@ -14,5 +14,8 @@ public:
 
     static std::string GetNowTime();
 
+    static std::string generate_uuid();
+
     static void Parse_msg(const std::string& msg, chat::Chat& chat_msg);
+
 };

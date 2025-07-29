@@ -8,6 +8,7 @@ class RedisClient{
 public:
     explicit RedisClient(const std::string& redis_uri);
 
+    // 以下对好友，包括文件
     bool saveUser(const std::string& username,
                   const std::unordered_map<std::string, std::string>& user_info);
     
@@ -21,13 +22,71 @@ public:
 
     bool setUserGroups(const std::string& username, const std::string& set_name, const std::string& element);
 
-    bool setGroupMembers(const std::string& groupname, const std::string& set_name, const std::string& username);
+    bool removeUserGroups(const std::string& username, const std::string& set_name, const std::string& element);
     
     bool addUserToOnlineLists(const std::string& username);
+
     bool removeUserToOnlineLists(const std::string& username);
 
+    std::vector<std::string> getFields(const std::string& from_name);
 
-private:
+    bool scan_hash(const std::string& username);
+
+    bool setResKey(const std::string& username, const std::string& set_name, const std::unordered_map<std::string, std::string>& msg);
+
+    bool deleteHash(const std::string& username, const std::string& set_name);
+
+    bool deleteHashKey(const std::string& key);
+
+    bool userHashHexists(const std::string& username, const std::string& set_name, const std::string& field);
+
+    bool deleteHashMember(const std::string& name, const std::string& set_name, const std::string& key);
+
+    bool setChatList(const std::string& username, const std::string& set_name, const std::string& field);
+
+    bool deleteChatList(const std::string& username, const std::string& set_name);
+
+    std::vector<std::string> getChatList(const std::string& username, const std::string& set_name);
+
+    std::unordered_map<std::string, std::string> getHash(const std::string& username, const std::string& set_name);
+
+    bool setFile(const std::string& username, const std::string& set_name, const std::string& field);
+
+    bool deleteFile(const std::string& username, const std::string& set_name, const std::string& field);
+
+    std::vector<std::string> getFile(const std::string& username, const std::string& set_name);
+    
+    std::unordered_map<std::string, std::vector<std::string>> getAllFile(const std::string& username);
+
+    bool setUserFile(const std::string& username, const std::string& from_name, const std::string& file_name);
+    
+    bool delUserFile(const std::string& username, const std::string& to_name);
+
+    // 以下对群聊
+    bool addGroup(const std::string& uuid, const std::string& username, const std::string& groupname,
+                  std::unordered_map<std::string, std::string>& g_info);
+
+    bool GroupExists(const std::string& username, const std::string& g_name);
+
+    bool SetGroupMember(const std::string& uuid, const std::string& username);
+    
+    bool UserSetGroups(const std::string& username, const std::string& u_name, const std::string& g_name);
+
+    bool SetGroupManager(const std::string& uuid, std::unordered_map<std::string, std::string>& g_info);
+
+    std::string getGroupuuid(const std::string& username, const std::string& g_name);
+
+    std::unordered_map<std::string, std::string> getGroupManager(const std::string& uuid);
+
+    std::vector<std::string> getGroupList(const std::string& username);
+
+    std::unordered_map<std::string, std::string> getGroupNotify (const std::string& username);
+
+    bool setGroupNotify(const std::string& username, const std::unordered_map<std::string, std::string>& g_notify);
+
+
+
+    private:
     sw::redis::Redis _redis;
 };
 

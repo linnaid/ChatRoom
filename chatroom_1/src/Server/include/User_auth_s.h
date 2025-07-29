@@ -4,6 +4,7 @@
 #include "user_auth.pb.h"
 #include "RedisClient.h"
 #include "MailSender.h"
+#include "user_page.h"
 
 
 struct clientHandle{
@@ -23,7 +24,7 @@ private:
     void Process(int cli, const std::string& buf);
     void Send(int cli, const std::string& buf);
     std::string Ser_R(bool a, const std::string& msg);
-    std::string Ser_L();
+    std::string Ser_L(int32_t b);
     void Register_R(int cli, const auth::Auth& rec);
     void LogIn(int cli, const auth::Auth& rec);
     std::string GetNowTime();
