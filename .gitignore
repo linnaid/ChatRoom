@@ -1,9 +1,33 @@
-# 忽略构建文件
-/build/
-/*.o
-*.exe
-*.out
+# 忽略构建目录
+build/
+chatroom_1/build/
 
-# 忽略 IDE 文件
-.vscode/
-*.swp
+# 忽略所有 .o、.out 文件
+*.o
+*.out
+*.obj
+
+# 忽略 CMake 的临时缓存/生成文件
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+Makefile2
+TargetDirectories.txt
+CMakeDirectoryInformation.cmake
+CMakeConfigureLog.yaml
+cmake.check_cache
+progress.marks
+
+# 忽略 Redis 持久化文件
+dump.rdb
+
+# # 忽略可执行文件（如果有无后缀的可执行文件）
+# # 可用正则形式匹配无扩展名文件（Unix-like 可执行）
+# *.[!ch]      # 排除 .c 和 .h 文件，适配无扩展名可执行
+
+# 忽略测试输出或临时文件
+chatroom_1/src/Client/test1/
+chatroom_1/src/Server/test1/
+chatroom_1/TEST/
+
