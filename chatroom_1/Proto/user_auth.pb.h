@@ -546,6 +546,7 @@ class Register_Ver final :
   enum : int {
     kEmailMsgFieldNumber = 1,
     kTimeFieldNumber = 3,
+    kUsernameFieldNumber = 4,
     kDecideFieldNumber = 2,
   };
   // string email_msg = 1;
@@ -576,6 +577,20 @@ class Register_Ver final :
   std::string* _internal_mutable_time();
   public:
 
+  // string username = 4;
+  void clear_username();
+  const std::string& username() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_username(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_username();
+  PROTOBUF_NODISCARD std::string* release_username();
+  void set_allocated_username(std::string* username);
+  private:
+  const std::string& _internal_username() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_username(const std::string& value);
+  std::string* _internal_mutable_username();
+  public:
+
   // bool decide = 2;
   void clear_decide();
   bool decide() const;
@@ -595,6 +610,7 @@ class Register_Ver final :
   struct Impl_ {
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr email_msg_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr time_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr username_;
     bool decide_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
@@ -1531,13 +1547,13 @@ class LogInResponse final :
   enum : int {
     kDecideFieldNumber = 1,
   };
-  // bool decide = 1;
+  // int32 decide = 1;
   void clear_decide();
-  bool decide() const;
-  void set_decide(bool value);
+  int32_t decide() const;
+  void set_decide(int32_t value);
   private:
-  bool _internal_decide() const;
-  void _internal_set_decide(bool value);
+  int32_t _internal_decide() const;
+  void _internal_set_decide(int32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:auth.LogInResponse)
@@ -1548,7 +1564,7 @@ class LogInResponse final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    bool decide_;
+    int32_t decide_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -2468,6 +2484,56 @@ inline void Register_Ver::set_allocated_time(std::string* time) {
   // @@protoc_insertion_point(field_set_allocated:auth.Register_Ver.time)
 }
 
+// string username = 4;
+inline void Register_Ver::clear_username() {
+  _impl_.username_.ClearToEmpty();
+}
+inline const std::string& Register_Ver::username() const {
+  // @@protoc_insertion_point(field_get:auth.Register_Ver.username)
+  return _internal_username();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void Register_Ver::set_username(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.username_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:auth.Register_Ver.username)
+}
+inline std::string* Register_Ver::mutable_username() {
+  std::string* _s = _internal_mutable_username();
+  // @@protoc_insertion_point(field_mutable:auth.Register_Ver.username)
+  return _s;
+}
+inline const std::string& Register_Ver::_internal_username() const {
+  return _impl_.username_.Get();
+}
+inline void Register_Ver::_internal_set_username(const std::string& value) {
+  
+  _impl_.username_.Set(value, GetArenaForAllocation());
+}
+inline std::string* Register_Ver::_internal_mutable_username() {
+  
+  return _impl_.username_.Mutable(GetArenaForAllocation());
+}
+inline std::string* Register_Ver::release_username() {
+  // @@protoc_insertion_point(field_release:auth.Register_Ver.username)
+  return _impl_.username_.Release();
+}
+inline void Register_Ver::set_allocated_username(std::string* username) {
+  if (username != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.username_.SetAllocated(username, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.username_.IsDefault()) {
+    _impl_.username_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:auth.Register_Ver.username)
+}
+
 // -------------------------------------------------------------------
 
 // Login_Ver
@@ -3248,22 +3314,22 @@ inline void LogInRequest::set_allocated_verification_code(std::string* verificat
 
 // LogInResponse
 
-// bool decide = 1;
+// int32 decide = 1;
 inline void LogInResponse::clear_decide() {
-  _impl_.decide_ = false;
+  _impl_.decide_ = 0;
 }
-inline bool LogInResponse::_internal_decide() const {
+inline int32_t LogInResponse::_internal_decide() const {
   return _impl_.decide_;
 }
-inline bool LogInResponse::decide() const {
+inline int32_t LogInResponse::decide() const {
   // @@protoc_insertion_point(field_get:auth.LogInResponse.decide)
   return _internal_decide();
 }
-inline void LogInResponse::_internal_set_decide(bool value) {
+inline void LogInResponse::_internal_set_decide(int32_t value) {
   
   _impl_.decide_ = value;
 }
-inline void LogInResponse::set_decide(bool value) {
+inline void LogInResponse::set_decide(int32_t value) {
   _internal_set_decide(value);
   // @@protoc_insertion_point(field_set:auth.LogInResponse.decide)
 }

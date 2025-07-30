@@ -53,6 +53,7 @@ private:
     void join_group(const chat::Chat& chat);
     void group_list(const chat::Chat& chat);
     void group_notify(const chat::Chat& chat);
+    void group_decide(const chat::Chat& chat);
 
     int _fd;
     std::mutex _mtx;

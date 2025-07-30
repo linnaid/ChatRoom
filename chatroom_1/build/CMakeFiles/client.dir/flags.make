@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/linnaid/ChatRoom/chatroom_1/Proto -I/home/linnaid/ChatRoom/chatroom_1/src/include -I/home/linnaid/ChatRoom/chatroom_1/src/Server/Redis -I/home/linnaid/ChatRoom/chatroom_1/src/Client/include -I/home/linnaid/ChatRoom/chatroom_1/src/Server/include -I/home/linnaid/ChatRoom/chatroom_1/src/Server/Mail
+CXX_INCLUDES = -I/home/linnaid/ChatRoom/chatroom_1/Proto -I/home/linnaid/ChatRoom/chatroom_1/src/include -I/home/linnaid/ChatRoom/chatroom_1/src/Server/Redis -I/home/linnaid/ChatRoom/chatroom_1/src/Client/include -I/home/linnaid/ChatRoom/chatroom_1/src/Server/include -I/home/linnaid/ChatRoom/chatroom_1/src/Server/Mail -I/home/linnaid/ChatRoom/chatroom_1/src/Server/FTP_server/include
 
 CXX_FLAGS = -g -std=gnu++17
 

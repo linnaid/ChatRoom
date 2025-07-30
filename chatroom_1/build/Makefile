@@ -169,6 +169,60 @@ Proto/user_auth.pb.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_auth.pb.cc.s
 .PHONY : Proto/user_auth.pb.cc.s
 
+Proto/user_chat.pb.o: Proto/user_chat.pb.cc.o
+.PHONY : Proto/user_chat.pb.o
+
+# target to build an object file
+Proto/user_chat.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Proto/user_chat.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_chat.pb.cc.o
+.PHONY : Proto/user_chat.pb.cc.o
+
+Proto/user_chat.pb.i: Proto/user_chat.pb.cc.i
+.PHONY : Proto/user_chat.pb.i
+
+# target to preprocess a source file
+Proto/user_chat.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Proto/user_chat.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_chat.pb.cc.i
+.PHONY : Proto/user_chat.pb.cc.i
+
+Proto/user_chat.pb.s: Proto/user_chat.pb.cc.s
+.PHONY : Proto/user_chat.pb.s
+
+# target to generate assembly for a file
+Proto/user_chat.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Proto/user_chat.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_chat.pb.cc.s
+.PHONY : Proto/user_chat.pb.cc.s
+
+Proto/user_friends.pb.o: Proto/user_friends.pb.cc.o
+.PHONY : Proto/user_friends.pb.o
+
+# target to build an object file
+Proto/user_friends.pb.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Proto/user_friends.pb.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_friends.pb.cc.o
+.PHONY : Proto/user_friends.pb.cc.o
+
+Proto/user_friends.pb.i: Proto/user_friends.pb.cc.i
+.PHONY : Proto/user_friends.pb.i
+
+# target to preprocess a source file
+Proto/user_friends.pb.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Proto/user_friends.pb.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_friends.pb.cc.i
+.PHONY : Proto/user_friends.pb.cc.i
+
+Proto/user_friends.pb.s: Proto/user_friends.pb.cc.s
+.PHONY : Proto/user_friends.pb.s
+
+# target to generate assembly for a file
+Proto/user_friends.pb.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Proto/user_friends.pb.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/Proto/user_friends.pb.cc.s
+.PHONY : Proto/user_friends.pb.cc.s
+
 src/Client/UserAuth/User_auth_c.o: src/Client/UserAuth/User_auth_c.cc.o
 .PHONY : src/Client/UserAuth/User_auth_c.o
 
@@ -192,6 +246,174 @@ src/Client/UserAuth/User_auth_c.s: src/Client/UserAuth/User_auth_c.cc.s
 src/Client/UserAuth/User_auth_c.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserAuth/User_auth_c.cc.s
 .PHONY : src/Client/UserAuth/User_auth_c.cc.s
+
+src/Client/UserChat/User_chat.o: src/Client/UserChat/User_chat.cc.o
+.PHONY : src/Client/UserChat/User_chat.o
+
+# target to build an object file
+src/Client/UserChat/User_chat.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o
+.PHONY : src/Client/UserChat/User_chat.cc.o
+
+src/Client/UserChat/User_chat.i: src/Client/UserChat/User_chat.cc.i
+.PHONY : src/Client/UserChat/User_chat.i
+
+# target to preprocess a source file
+src/Client/UserChat/User_chat.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.i
+.PHONY : src/Client/UserChat/User_chat.cc.i
+
+src/Client/UserChat/User_chat.s: src/Client/UserChat/User_chat.cc.s
+.PHONY : src/Client/UserChat/User_chat.s
+
+# target to generate assembly for a file
+src/Client/UserChat/User_chat.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.s
+.PHONY : src/Client/UserChat/User_chat.cc.s
+
+src/Client/UserChat/chat_tools.o: src/Client/UserChat/chat_tools.cc.o
+.PHONY : src/Client/UserChat/chat_tools.o
+
+# target to build an object file
+src/Client/UserChat/chat_tools.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o
+.PHONY : src/Client/UserChat/chat_tools.cc.o
+
+src/Client/UserChat/chat_tools.i: src/Client/UserChat/chat_tools.cc.i
+.PHONY : src/Client/UserChat/chat_tools.i
+
+# target to preprocess a source file
+src/Client/UserChat/chat_tools.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.i
+.PHONY : src/Client/UserChat/chat_tools.cc.i
+
+src/Client/UserChat/chat_tools.s: src/Client/UserChat/chat_tools.cc.s
+.PHONY : src/Client/UserChat/chat_tools.s
+
+# target to generate assembly for a file
+src/Client/UserChat/chat_tools.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.s
+.PHONY : src/Client/UserChat/chat_tools.cc.s
+
+src/Client/UserChat/recv_friends.o: src/Client/UserChat/recv_friends.cc.o
+.PHONY : src/Client/UserChat/recv_friends.o
+
+# target to build an object file
+src/Client/UserChat/recv_friends.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o
+.PHONY : src/Client/UserChat/recv_friends.cc.o
+
+src/Client/UserChat/recv_friends.i: src/Client/UserChat/recv_friends.cc.i
+.PHONY : src/Client/UserChat/recv_friends.i
+
+# target to preprocess a source file
+src/Client/UserChat/recv_friends.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.i
+.PHONY : src/Client/UserChat/recv_friends.cc.i
+
+src/Client/UserChat/recv_friends.s: src/Client/UserChat/recv_friends.cc.s
+.PHONY : src/Client/UserChat/recv_friends.s
+
+# target to generate assembly for a file
+src/Client/UserChat/recv_friends.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.s
+.PHONY : src/Client/UserChat/recv_friends.cc.s
+
+src/Client/UserChat/recv_groups.o: src/Client/UserChat/recv_groups.cc.o
+.PHONY : src/Client/UserChat/recv_groups.o
+
+# target to build an object file
+src/Client/UserChat/recv_groups.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o
+.PHONY : src/Client/UserChat/recv_groups.cc.o
+
+src/Client/UserChat/recv_groups.i: src/Client/UserChat/recv_groups.cc.i
+.PHONY : src/Client/UserChat/recv_groups.i
+
+# target to preprocess a source file
+src/Client/UserChat/recv_groups.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.i
+.PHONY : src/Client/UserChat/recv_groups.cc.i
+
+src/Client/UserChat/recv_groups.s: src/Client/UserChat/recv_groups.cc.s
+.PHONY : src/Client/UserChat/recv_groups.s
+
+# target to generate assembly for a file
+src/Client/UserChat/recv_groups.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.s
+.PHONY : src/Client/UserChat/recv_groups.cc.s
+
+src/Client/UserChat/send_friends.o: src/Client/UserChat/send_friends.cc.o
+.PHONY : src/Client/UserChat/send_friends.o
+
+# target to build an object file
+src/Client/UserChat/send_friends.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o
+.PHONY : src/Client/UserChat/send_friends.cc.o
+
+src/Client/UserChat/send_friends.i: src/Client/UserChat/send_friends.cc.i
+.PHONY : src/Client/UserChat/send_friends.i
+
+# target to preprocess a source file
+src/Client/UserChat/send_friends.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.i
+.PHONY : src/Client/UserChat/send_friends.cc.i
+
+src/Client/UserChat/send_friends.s: src/Client/UserChat/send_friends.cc.s
+.PHONY : src/Client/UserChat/send_friends.s
+
+# target to generate assembly for a file
+src/Client/UserChat/send_friends.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.s
+.PHONY : src/Client/UserChat/send_friends.cc.s
+
+src/Client/UserChat/send_groups.o: src/Client/UserChat/send_groups.cc.o
+.PHONY : src/Client/UserChat/send_groups.o
+
+# target to build an object file
+src/Client/UserChat/send_groups.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o
+.PHONY : src/Client/UserChat/send_groups.cc.o
+
+src/Client/UserChat/send_groups.i: src/Client/UserChat/send_groups.cc.i
+.PHONY : src/Client/UserChat/send_groups.i
+
+# target to preprocess a source file
+src/Client/UserChat/send_groups.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.i
+.PHONY : src/Client/UserChat/send_groups.cc.i
+
+src/Client/UserChat/send_groups.s: src/Client/UserChat/send_groups.cc.s
+.PHONY : src/Client/UserChat/send_groups.s
+
+# target to generate assembly for a file
+src/Client/UserChat/send_groups.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.s
+.PHONY : src/Client/UserChat/send_groups.cc.s
+
+src/Client/UserFile/FTP_client.o: src/Client/UserFile/FTP_client.cc.o
+.PHONY : src/Client/UserFile/FTP_client.o
+
+# target to build an object file
+src/Client/UserFile/FTP_client.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o
+.PHONY : src/Client/UserFile/FTP_client.cc.o
+
+src/Client/UserFile/FTP_client.i: src/Client/UserFile/FTP_client.cc.i
+.PHONY : src/Client/UserFile/FTP_client.i
+
+# target to preprocess a source file
+src/Client/UserFile/FTP_client.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.i
+.PHONY : src/Client/UserFile/FTP_client.cc.i
+
+src/Client/UserFile/FTP_client.s: src/Client/UserFile/FTP_client.cc.s
+.PHONY : src/Client/UserFile/FTP_client.s
+
+# target to generate assembly for a file
+src/Client/UserFile/FTP_client.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.s
+.PHONY : src/Client/UserFile/FTP_client.cc.s
 
 src/Client/main.o: src/Client/main.cc.o
 .PHONY : src/Client/main.o
@@ -217,6 +439,174 @@ src/Client/main.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/main.cc.s
 .PHONY : src/Client/main.cc.s
 
+src/Client/tools/tools.o: src/Client/tools/tools.cc.o
+.PHONY : src/Client/tools/tools.o
+
+# target to build an object file
+src/Client/tools/tools.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/tools/tools.cc.o
+.PHONY : src/Client/tools/tools.cc.o
+
+src/Client/tools/tools.i: src/Client/tools/tools.cc.i
+.PHONY : src/Client/tools/tools.i
+
+# target to preprocess a source file
+src/Client/tools/tools.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/tools/tools.cc.i
+.PHONY : src/Client/tools/tools.cc.i
+
+src/Client/tools/tools.s: src/Client/tools/tools.cc.s
+.PHONY : src/Client/tools/tools.s
+
+# target to generate assembly for a file
+src/Client/tools/tools.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/Client/tools/tools.cc.s
+.PHONY : src/Client/tools/tools.cc.s
+
+src/Server/FTP_server/command/FTPcommand.o: src/Server/FTP_server/command/FTPcommand.cc.o
+.PHONY : src/Server/FTP_server/command/FTPcommand.o
+
+# target to build an object file
+src/Server/FTP_server/command/FTPcommand.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/command/FTPcommand.cc.o
+.PHONY : src/Server/FTP_server/command/FTPcommand.cc.o
+
+src/Server/FTP_server/command/FTPcommand.i: src/Server/FTP_server/command/FTPcommand.cc.i
+.PHONY : src/Server/FTP_server/command/FTPcommand.i
+
+# target to preprocess a source file
+src/Server/FTP_server/command/FTPcommand.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/command/FTPcommand.cc.i
+.PHONY : src/Server/FTP_server/command/FTPcommand.cc.i
+
+src/Server/FTP_server/command/FTPcommand.s: src/Server/FTP_server/command/FTPcommand.cc.s
+.PHONY : src/Server/FTP_server/command/FTPcommand.s
+
+# target to generate assembly for a file
+src/Server/FTP_server/command/FTPcommand.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/command/FTPcommand.cc.s
+.PHONY : src/Server/FTP_server/command/FTPcommand.cc.s
+
+src/Server/FTP_server/connect/Dataconnect.o: src/Server/FTP_server/connect/Dataconnect.cc.o
+.PHONY : src/Server/FTP_server/connect/Dataconnect.o
+
+# target to build an object file
+src/Server/FTP_server/connect/Dataconnect.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/connect/Dataconnect.cc.o
+.PHONY : src/Server/FTP_server/connect/Dataconnect.cc.o
+
+src/Server/FTP_server/connect/Dataconnect.i: src/Server/FTP_server/connect/Dataconnect.cc.i
+.PHONY : src/Server/FTP_server/connect/Dataconnect.i
+
+# target to preprocess a source file
+src/Server/FTP_server/connect/Dataconnect.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/connect/Dataconnect.cc.i
+.PHONY : src/Server/FTP_server/connect/Dataconnect.cc.i
+
+src/Server/FTP_server/connect/Dataconnect.s: src/Server/FTP_server/connect/Dataconnect.cc.s
+.PHONY : src/Server/FTP_server/connect/Dataconnect.s
+
+# target to generate assembly for a file
+src/Server/FTP_server/connect/Dataconnect.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/connect/Dataconnect.cc.s
+.PHONY : src/Server/FTP_server/connect/Dataconnect.cc.s
+
+src/Server/FTP_server/connect/FTPconnect.o: src/Server/FTP_server/connect/FTPconnect.cc.o
+.PHONY : src/Server/FTP_server/connect/FTPconnect.o
+
+# target to build an object file
+src/Server/FTP_server/connect/FTPconnect.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/connect/FTPconnect.cc.o
+.PHONY : src/Server/FTP_server/connect/FTPconnect.cc.o
+
+src/Server/FTP_server/connect/FTPconnect.i: src/Server/FTP_server/connect/FTPconnect.cc.i
+.PHONY : src/Server/FTP_server/connect/FTPconnect.i
+
+# target to preprocess a source file
+src/Server/FTP_server/connect/FTPconnect.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/connect/FTPconnect.cc.i
+.PHONY : src/Server/FTP_server/connect/FTPconnect.cc.i
+
+src/Server/FTP_server/connect/FTPconnect.s: src/Server/FTP_server/connect/FTPconnect.cc.s
+.PHONY : src/Server/FTP_server/connect/FTPconnect.s
+
+# target to generate assembly for a file
+src/Server/FTP_server/connect/FTPconnect.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/connect/FTPconnect.cc.s
+.PHONY : src/Server/FTP_server/connect/FTPconnect.cc.s
+
+src/Server/FTP_server/reactor/master.o: src/Server/FTP_server/reactor/master.cc.o
+.PHONY : src/Server/FTP_server/reactor/master.o
+
+# target to build an object file
+src/Server/FTP_server/reactor/master.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/reactor/master.cc.o
+.PHONY : src/Server/FTP_server/reactor/master.cc.o
+
+src/Server/FTP_server/reactor/master.i: src/Server/FTP_server/reactor/master.cc.i
+.PHONY : src/Server/FTP_server/reactor/master.i
+
+# target to preprocess a source file
+src/Server/FTP_server/reactor/master.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/reactor/master.cc.i
+.PHONY : src/Server/FTP_server/reactor/master.cc.i
+
+src/Server/FTP_server/reactor/master.s: src/Server/FTP_server/reactor/master.cc.s
+.PHONY : src/Server/FTP_server/reactor/master.s
+
+# target to generate assembly for a file
+src/Server/FTP_server/reactor/master.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/reactor/master.cc.s
+.PHONY : src/Server/FTP_server/reactor/master.cc.s
+
+src/Server/FTP_server/reactor/worker.o: src/Server/FTP_server/reactor/worker.cc.o
+.PHONY : src/Server/FTP_server/reactor/worker.o
+
+# target to build an object file
+src/Server/FTP_server/reactor/worker.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/reactor/worker.cc.o
+.PHONY : src/Server/FTP_server/reactor/worker.cc.o
+
+src/Server/FTP_server/reactor/worker.i: src/Server/FTP_server/reactor/worker.cc.i
+.PHONY : src/Server/FTP_server/reactor/worker.i
+
+# target to preprocess a source file
+src/Server/FTP_server/reactor/worker.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/reactor/worker.cc.i
+.PHONY : src/Server/FTP_server/reactor/worker.cc.i
+
+src/Server/FTP_server/reactor/worker.s: src/Server/FTP_server/reactor/worker.cc.s
+.PHONY : src/Server/FTP_server/reactor/worker.s
+
+# target to generate assembly for a file
+src/Server/FTP_server/reactor/worker.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/reactor/worker.cc.s
+.PHONY : src/Server/FTP_server/reactor/worker.cc.s
+
+src/Server/FTP_server/thread_pool/ThreadSafeQueue.o: src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.o
+.PHONY : src/Server/FTP_server/thread_pool/ThreadSafeQueue.o
+
+# target to build an object file
+src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.o
+.PHONY : src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.o
+
+src/Server/FTP_server/thread_pool/ThreadSafeQueue.i: src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.i
+.PHONY : src/Server/FTP_server/thread_pool/ThreadSafeQueue.i
+
+# target to preprocess a source file
+src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.i
+.PHONY : src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.i
+
+src/Server/FTP_server/thread_pool/ThreadSafeQueue.s: src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.s
+.PHONY : src/Server/FTP_server/thread_pool/ThreadSafeQueue.s
+
+# target to generate assembly for a file
+src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.s
+.PHONY : src/Server/FTP_server/thread_pool/ThreadSafeQueue.cc.s
+
 src/Server/Mail/MailSender.o: src/Server/Mail/MailSender.cc.o
 .PHONY : src/Server/Mail/MailSender.o
 
@@ -240,6 +630,102 @@ src/Server/Mail/MailSender.s: src/Server/Mail/MailSender.cc.s
 src/Server/Mail/MailSender.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Mail/MailSender.cc.s
 .PHONY : src/Server/Mail/MailSender.cc.s
+
+src/Server/Manage/User_manager.o: src/Server/Manage/User_manager.cc.o
+.PHONY : src/Server/Manage/User_manager.o
+
+# target to build an object file
+src/Server/Manage/User_manager.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Manage/User_manager.cc.o
+.PHONY : src/Server/Manage/User_manager.cc.o
+
+src/Server/Manage/User_manager.i: src/Server/Manage/User_manager.cc.i
+.PHONY : src/Server/Manage/User_manager.i
+
+# target to preprocess a source file
+src/Server/Manage/User_manager.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Manage/User_manager.cc.i
+.PHONY : src/Server/Manage/User_manager.cc.i
+
+src/Server/Manage/User_manager.s: src/Server/Manage/User_manager.cc.s
+.PHONY : src/Server/Manage/User_manager.s
+
+# target to generate assembly for a file
+src/Server/Manage/User_manager.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Manage/User_manager.cc.s
+.PHONY : src/Server/Manage/User_manager.cc.s
+
+src/Server/Manage/messageCenter.o: src/Server/Manage/messageCenter.cc.o
+.PHONY : src/Server/Manage/messageCenter.o
+
+# target to build an object file
+src/Server/Manage/messageCenter.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Manage/messageCenter.cc.o
+.PHONY : src/Server/Manage/messageCenter.cc.o
+
+src/Server/Manage/messageCenter.i: src/Server/Manage/messageCenter.cc.i
+.PHONY : src/Server/Manage/messageCenter.i
+
+# target to preprocess a source file
+src/Server/Manage/messageCenter.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Manage/messageCenter.cc.i
+.PHONY : src/Server/Manage/messageCenter.cc.i
+
+src/Server/Manage/messageCenter.s: src/Server/Manage/messageCenter.cc.s
+.PHONY : src/Server/Manage/messageCenter.s
+
+# target to generate assembly for a file
+src/Server/Manage/messageCenter.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Manage/messageCenter.cc.s
+.PHONY : src/Server/Manage/messageCenter.cc.s
+
+src/Server/Reactor/MasterServer.o: src/Server/Reactor/MasterServer.cc.o
+.PHONY : src/Server/Reactor/MasterServer.o
+
+# target to build an object file
+src/Server/Reactor/MasterServer.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Reactor/MasterServer.cc.o
+.PHONY : src/Server/Reactor/MasterServer.cc.o
+
+src/Server/Reactor/MasterServer.i: src/Server/Reactor/MasterServer.cc.i
+.PHONY : src/Server/Reactor/MasterServer.i
+
+# target to preprocess a source file
+src/Server/Reactor/MasterServer.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Reactor/MasterServer.cc.i
+.PHONY : src/Server/Reactor/MasterServer.cc.i
+
+src/Server/Reactor/MasterServer.s: src/Server/Reactor/MasterServer.cc.s
+.PHONY : src/Server/Reactor/MasterServer.s
+
+# target to generate assembly for a file
+src/Server/Reactor/MasterServer.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Reactor/MasterServer.cc.s
+.PHONY : src/Server/Reactor/MasterServer.cc.s
+
+src/Server/Reactor/Worker.o: src/Server/Reactor/Worker.cc.o
+.PHONY : src/Server/Reactor/Worker.o
+
+# target to build an object file
+src/Server/Reactor/Worker.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Reactor/Worker.cc.o
+.PHONY : src/Server/Reactor/Worker.cc.o
+
+src/Server/Reactor/Worker.i: src/Server/Reactor/Worker.cc.i
+.PHONY : src/Server/Reactor/Worker.i
+
+# target to preprocess a source file
+src/Server/Reactor/Worker.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Reactor/Worker.cc.i
+.PHONY : src/Server/Reactor/Worker.cc.i
+
+src/Server/Reactor/Worker.s: src/Server/Reactor/Worker.cc.s
+.PHONY : src/Server/Reactor/Worker.s
+
+# target to generate assembly for a file
+src/Server/Reactor/Worker.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/Reactor/Worker.cc.s
+.PHONY : src/Server/Reactor/Worker.cc.s
 
 src/Server/Redis/RedisClient.o: src/Server/Redis/RedisClient.cc.o
 .PHONY : src/Server/Redis/RedisClient.o
@@ -313,6 +799,30 @@ src/Server/main.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/main.cc.s
 .PHONY : src/Server/main.cc.s
 
+src/Server/net/connection.o: src/Server/net/connection.cc.o
+.PHONY : src/Server/net/connection.o
+
+# target to build an object file
+src/Server/net/connection.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/net/connection.cc.o
+.PHONY : src/Server/net/connection.cc.o
+
+src/Server/net/connection.i: src/Server/net/connection.cc.i
+.PHONY : src/Server/net/connection.i
+
+# target to preprocess a source file
+src/Server/net/connection.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/net/connection.cc.i
+.PHONY : src/Server/net/connection.cc.i
+
+src/Server/net/connection.s: src/Server/net/connection.cc.s
+.PHONY : src/Server/net/connection.s
+
+# target to generate assembly for a file
+src/Server/net/connection.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/net/connection.cc.s
+.PHONY : src/Server/net/connection.cc.s
+
 src/Server/sec-r_l.o: src/Server/sec-r_l.cc.o
 .PHONY : src/Server/sec-r_l.o
 
@@ -337,6 +847,87 @@ src/Server/sec-r_l.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/Server/sec-r_l.cc.s
 .PHONY : src/Server/sec-r_l.cc.s
 
+src/include/include.o: src/include/include.cc.o
+.PHONY : src/include/include.o
+
+# target to build an object file
+src/include/include.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/include/include.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/include/include.cc.o
+.PHONY : src/include/include.cc.o
+
+src/include/include.i: src/include/include.cc.i
+.PHONY : src/include/include.i
+
+# target to preprocess a source file
+src/include/include.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/include/include.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/include/include.cc.i
+.PHONY : src/include/include.cc.i
+
+src/include/include.s: src/include/include.cc.s
+.PHONY : src/include/include.s
+
+# target to generate assembly for a file
+src/include/include.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/include/include.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/include/include.cc.s
+.PHONY : src/include/include.cc.s
+
+src/tools/protocol.o: src/tools/protocol.cc.o
+.PHONY : src/tools/protocol.o
+
+# target to build an object file
+src/tools/protocol.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/tools/protocol.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/tools/protocol.cc.o
+.PHONY : src/tools/protocol.cc.o
+
+src/tools/protocol.i: src/tools/protocol.cc.i
+.PHONY : src/tools/protocol.i
+
+# target to preprocess a source file
+src/tools/protocol.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/tools/protocol.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/tools/protocol.cc.i
+.PHONY : src/tools/protocol.cc.i
+
+src/tools/protocol.s: src/tools/protocol.cc.s
+.PHONY : src/tools/protocol.s
+
+# target to generate assembly for a file
+src/tools/protocol.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/tools/protocol.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/tools/protocol.cc.s
+.PHONY : src/tools/protocol.cc.s
+
+src/tools/user_page.o: src/tools/user_page.cc.o
+.PHONY : src/tools/user_page.o
+
+# target to build an object file
+src/tools/user_page.cc.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/tools/user_page.cc.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/tools/user_page.cc.o
+.PHONY : src/tools/user_page.cc.o
+
+src/tools/user_page.i: src/tools/user_page.cc.i
+.PHONY : src/tools/user_page.i
+
+# target to preprocess a source file
+src/tools/user_page.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/tools/user_page.cc.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/tools/user_page.cc.i
+.PHONY : src/tools/user_page.cc.i
+
+src/tools/user_page.s: src/tools/user_page.cc.s
+.PHONY : src/tools/user_page.s
+
+# target to generate assembly for a file
+src/tools/user_page.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/src/tools/user_page.cc.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/tools/user_page.cc.s
+.PHONY : src/tools/user_page.cc.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -350,15 +941,75 @@ help:
 	@echo "... Proto/user_auth.pb.o"
 	@echo "... Proto/user_auth.pb.i"
 	@echo "... Proto/user_auth.pb.s"
+	@echo "... Proto/user_chat.pb.o"
+	@echo "... Proto/user_chat.pb.i"
+	@echo "... Proto/user_chat.pb.s"
+	@echo "... Proto/user_friends.pb.o"
+	@echo "... Proto/user_friends.pb.i"
+	@echo "... Proto/user_friends.pb.s"
 	@echo "... src/Client/UserAuth/User_auth_c.o"
 	@echo "... src/Client/UserAuth/User_auth_c.i"
 	@echo "... src/Client/UserAuth/User_auth_c.s"
+	@echo "... src/Client/UserChat/User_chat.o"
+	@echo "... src/Client/UserChat/User_chat.i"
+	@echo "... src/Client/UserChat/User_chat.s"
+	@echo "... src/Client/UserChat/chat_tools.o"
+	@echo "... src/Client/UserChat/chat_tools.i"
+	@echo "... src/Client/UserChat/chat_tools.s"
+	@echo "... src/Client/UserChat/recv_friends.o"
+	@echo "... src/Client/UserChat/recv_friends.i"
+	@echo "... src/Client/UserChat/recv_friends.s"
+	@echo "... src/Client/UserChat/recv_groups.o"
+	@echo "... src/Client/UserChat/recv_groups.i"
+	@echo "... src/Client/UserChat/recv_groups.s"
+	@echo "... src/Client/UserChat/send_friends.o"
+	@echo "... src/Client/UserChat/send_friends.i"
+	@echo "... src/Client/UserChat/send_friends.s"
+	@echo "... src/Client/UserChat/send_groups.o"
+	@echo "... src/Client/UserChat/send_groups.i"
+	@echo "... src/Client/UserChat/send_groups.s"
+	@echo "... src/Client/UserFile/FTP_client.o"
+	@echo "... src/Client/UserFile/FTP_client.i"
+	@echo "... src/Client/UserFile/FTP_client.s"
 	@echo "... src/Client/main.o"
 	@echo "... src/Client/main.i"
 	@echo "... src/Client/main.s"
+	@echo "... src/Client/tools/tools.o"
+	@echo "... src/Client/tools/tools.i"
+	@echo "... src/Client/tools/tools.s"
+	@echo "... src/Server/FTP_server/command/FTPcommand.o"
+	@echo "... src/Server/FTP_server/command/FTPcommand.i"
+	@echo "... src/Server/FTP_server/command/FTPcommand.s"
+	@echo "... src/Server/FTP_server/connect/Dataconnect.o"
+	@echo "... src/Server/FTP_server/connect/Dataconnect.i"
+	@echo "... src/Server/FTP_server/connect/Dataconnect.s"
+	@echo "... src/Server/FTP_server/connect/FTPconnect.o"
+	@echo "... src/Server/FTP_server/connect/FTPconnect.i"
+	@echo "... src/Server/FTP_server/connect/FTPconnect.s"
+	@echo "... src/Server/FTP_server/reactor/master.o"
+	@echo "... src/Server/FTP_server/reactor/master.i"
+	@echo "... src/Server/FTP_server/reactor/master.s"
+	@echo "... src/Server/FTP_server/reactor/worker.o"
+	@echo "... src/Server/FTP_server/reactor/worker.i"
+	@echo "... src/Server/FTP_server/reactor/worker.s"
+	@echo "... src/Server/FTP_server/thread_pool/ThreadSafeQueue.o"
+	@echo "... src/Server/FTP_server/thread_pool/ThreadSafeQueue.i"
+	@echo "... src/Server/FTP_server/thread_pool/ThreadSafeQueue.s"
 	@echo "... src/Server/Mail/MailSender.o"
 	@echo "... src/Server/Mail/MailSender.i"
 	@echo "... src/Server/Mail/MailSender.s"
+	@echo "... src/Server/Manage/User_manager.o"
+	@echo "... src/Server/Manage/User_manager.i"
+	@echo "... src/Server/Manage/User_manager.s"
+	@echo "... src/Server/Manage/messageCenter.o"
+	@echo "... src/Server/Manage/messageCenter.i"
+	@echo "... src/Server/Manage/messageCenter.s"
+	@echo "... src/Server/Reactor/MasterServer.o"
+	@echo "... src/Server/Reactor/MasterServer.i"
+	@echo "... src/Server/Reactor/MasterServer.s"
+	@echo "... src/Server/Reactor/Worker.o"
+	@echo "... src/Server/Reactor/Worker.i"
+	@echo "... src/Server/Reactor/Worker.s"
 	@echo "... src/Server/Redis/RedisClient.o"
 	@echo "... src/Server/Redis/RedisClient.i"
 	@echo "... src/Server/Redis/RedisClient.s"
@@ -368,9 +1019,21 @@ help:
 	@echo "... src/Server/main.o"
 	@echo "... src/Server/main.i"
 	@echo "... src/Server/main.s"
+	@echo "... src/Server/net/connection.o"
+	@echo "... src/Server/net/connection.i"
+	@echo "... src/Server/net/connection.s"
 	@echo "... src/Server/sec-r_l.o"
 	@echo "... src/Server/sec-r_l.i"
 	@echo "... src/Server/sec-r_l.s"
+	@echo "... src/include/include.o"
+	@echo "... src/include/include.i"
+	@echo "... src/include/include.s"
+	@echo "... src/tools/protocol.o"
+	@echo "... src/tools/protocol.i"
+	@echo "... src/tools/protocol.s"
+	@echo "... src/tools/user_page.o"
+	@echo "... src/tools/user_page.i"
+	@echo "... src/tools/user_page.s"
 .PHONY : help
 
 

@@ -107,6 +107,9 @@ bool Connection::readMessage()
         case chat::Group::FINDREQ:
             group_notify(chat);
             break;
+        case chat::Group::JOINGROUPRESPONSE:
+            group_decide(chat);
+            break;
         case chat::Group::GROUP_QUIT:
             break;
         default:
@@ -118,10 +121,70 @@ bool Connection::readMessage()
 
 // 以下是关于群聊
 
+void Connection::group_decide(const chat::Chat& chat) {
+    std::string u_name = chat.join_res().u_name();
+    std::string g_name = chat.join_res().g_name();
+    std::string username = fds[_fd];
+    std::string user = chat.join_res().username();
+    std::string name = g_name + "   ---" + u_name;
+    std::string time = Protocol::GetNowTime();
+    bool decide;
+    std::string a;
+
+    if(chat.join_res().decide()) {
+        std::string uuid = _user_msg.getGroup_uuid(u_name, g_name);
+        _redis.SetGroupMember(uuid, user);
+        std::unordered_map<std::string, std::string> managers;
+        managers = _redis.getGroupManager(uuid);
+        for(const auto& [statue, user] : managers) {
+            _redis.delGroupNotify(user, name);
+        }
+        a = "\033[33m您被通过了加群申请 ,来自 \033[1;32m" + username + "\033[33m 您现在是 \033[1;32m" + name + " 中的一员了!\033[0m";
+        decide = true;
+    } else {
+        a = "\033[31m您被拒绝了加群申请 ,来自 \033[1;32m" + username + "\033[33m 群聊: \033[1;32m" + name  + "\033[0m";
+        decide = false;
+    }
+    
+    int fd = users[user];
+    if(fd == 0) {
+        std::unordered_map<std::string, std::string> msg;
+        msg = {
+            {a, time}
+        };
+        _redis.setResKey("Response", user, msg);
+        return;
+    }
+
+    chat::Chat chat_group;
+    chat_group.set_group(chat::Group::JOINGROUPRESPONSE);
+    chat::JoinGroupResponse* join_res = chat_group.mutable_join_res();
+    join_res->set_u_name(u_name);
+    join_res->set_g_name(g_name);
+    join_res->set_time(time);
+    join_res->set_decide(decide);
+    std::string msg;
+    chat_group.SerializeToString(&msg);
+    msg = Protocol::pack(msg);
+
+    MessageCenter::instance().dispatch(_fd, fd, msg);
+}
 
 void Connection::group_notify(const chat::Chat& chat) {
+    std::string username = fds[_fd];
+    chat::Chat chat_group;
+    chat_group.set_group(chat::Group::FINDREQ);
+    chat::FindRequest* group_notify = chat_group.mutable_group_notify();
     std::unordered_map<std::string, std::string> notify;
-    notify = _redis
+    notify = _redis.getGroupNotify(username);
+    for(const auto& [user, value] : notify) {
+        (*group_notify->mutable_response())[user] = value;
+    }
+    std::string msg;
+    chat_group.SerializeToString(&msg);
+    msg = Protocol::pack(msg);
+
+    MessageCenter::instance().dispatch(_fd, _fd, msg);
 }
 
 void Connection::group_list(const chat::Chat& chat) {
@@ -180,8 +243,9 @@ void Connection::join_group(const chat::Chat& chat) {
         chat_group.SerializeToString(&group);
         group = Protocol::pack(group);
         std::unordered_map<std::string, std::string> g_info;
+        std::string name = g_name + "   ---" + u_name;
         g_info = {
-            {username, group}
+            {name, group}
         };
         _redis.setGroupNotify(user, g_info);
 
@@ -502,7 +566,7 @@ void Connection::adduser(const std::string& username) {
     chat_list.set_action(chat::Actions::LOGINLIST);
     chat::FriendLists* lists = chat_list.mutable_friends();
     for(const auto& it : friends) {
-        std::cout << it << std::endl;
+        // std::cout << it << std::endl;
         int user = users[it];
         if(user != 0) {
             (*lists->mutable_friends())[it] = true;
@@ -517,6 +581,23 @@ void Connection::adduser(const std::string& username) {
     list = Protocol::pack(list);
     MessageCenter::instance().dispatch(_fd, _fd, list);
     
+    // 发它的群聊消息
+    std::vector<std::string> groups;
+    groups = _redis.getGroupList(username);
+    chat::Chat chat_lists;
+    chat_lists.set_action(chat::Actions::LOGINLIST);
+    chat::GroupList* group_list = chat_lists.mutable_group_list();
+    for(const auto& it : groups) {
+        // std::cout << it << "  hello" << std::endl;
+        group_list->add_groups(it);
+    }
+    std::string lis;
+    if(!chat_list.SerializeToString(&lis)) {
+        std::cerr << "\033[34mSeria error!\033[0m" << std::endl;
+    }
+    lis = Protocol::pack(lis);
+    MessageCenter::instance().dispatch(_fd, _fd, lis);
+
     /////// 发一个包让它打印收到的消息
     std::unordered_map<std::string, std::string> result;
     result = _redis.getHash("Response", username);

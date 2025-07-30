@@ -70,6 +70,8 @@ public:
 
     bool SetGroupMember(const std::string& uuid, const std::string& username);
     
+    std::vector<std::string> getGroupMember(const std::string& uuid);
+
     bool UserSetGroups(const std::string& username, const std::string& u_name, const std::string& g_name);
 
     bool SetGroupManager(const std::string& uuid, std::unordered_map<std::string, std::string>& g_info);
@@ -84,7 +86,7 @@ public:
 
     bool setGroupNotify(const std::string& username, const std::unordered_map<std::string, std::string>& g_notify);
 
-
+    bool delGroupNotify(const std::string& username, const std::string& g_name);
 
     private:
     sw::redis::Redis _redis;

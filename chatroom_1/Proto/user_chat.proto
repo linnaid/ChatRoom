@@ -2,8 +2,9 @@ syntax = "proto3";
 package chat;
 
 enum Actions {
+    ACTION_QUIT = 0;
     // 登陆
-    LOGIN = 0;
+    LOGIN = 21;
     // 登陆重复
     UNLOGIN = 15;
     GROUPMSG = 1;
@@ -24,21 +25,27 @@ enum Actions {
     // 屏蔽好友
     BLOCKFRIEND = 16;
     UNBLOCKFRIEND = 17;
+    // 文件发送
+    SENDFILE = 18;
+    // 文件接收
+    RECVFILE = 19;
+    // 文件查看
+    LOOKFILE = 20;
 }
 
-enum Statues_line{
-    OFFLINE = 0;
-    ONLINE = 1;
-    BUSY = 2;
-};
-
-enum Statues_friend {
-    WAITING = 0;
-    ACCEPT = 1;
-    REJECT = 2;
+enum Group {
+    GROUP_QUIT = 0;
+    GROUPLIST = 1;
+    ADDGROUP = 2;
+    JOINGROUP = 3;
+    JOINGROUPRESPONSE = 4;
+    FINDREQ = 5;
+    // DECIDEREQ = 6;
 }
 
 message Chat {
+    
+    // 以下是对好友的处理，包括部分登陆时的判定
     Actions action = 1;
     FriendChatMessage chat_fd = 2;
     AddFriendRequest friend_req = 4;
@@ -52,6 +59,82 @@ message Chat {
     LoginResponse response = 12;
     OfflineMSG off_msg = 13;
     BlockFriend block_friend = 14;
+    SendFile send_file = 15;
+    RecvFile recv_file = 16;
+    LookFileRequest file_req = 17;
+
+    // 以下是对群的处理
+    Group group = 18;
+    AddGroup add_group = 19;
+    JoinGroup join_group = 20;
+    JoinGroupResponse join_res = 21;
+    GroupList group_list = 22;
+    FindRequest group_notify = 23;
+}
+
+// 以下是对群聊的处理
+
+
+message FindRequest {
+    map<string, bytes> response = 1;
+}
+
+// 列出群聊列表
+message GroupList {
+    string username = 1;
+    string time = 2;
+    repeated string groups = 3;
+}
+
+// 加群请求...
+message JoinGroup {
+    string u_name = 1;
+    string g_name = 2;
+    string username = 3;
+    bool decide = 4;
+    string time = 5;
+    string msg = 6;
+}
+
+// 返回是否加群成功
+message JoinGroupResponse {
+    string u_name = 1;
+    string g_name = 2;
+    string username = 3;
+    bool decide = 4;
+    string time = 5;
+    string msg = 6;
+}
+
+message AddGroup {
+    string username = 1;
+    string group_name = 2;
+    string time = 3;
+    string msg = 4;
+}
+
+
+
+// 以下是对好友的处理，包括个人登陆
+message LookFileRequest {
+    string username = 1;
+    map<string, FileList> result = 2;
+}
+
+message FileList {
+    repeated string files = 1;
+}
+
+message SendFile {
+    string name = 1;
+    string file_name = 2;
+    string time = 3;
+}
+
+message RecvFile {
+    string name = 1;
+    string file_name = 2;
+    string time = 3;
 }
 
 message BlockFriend {
@@ -109,17 +192,6 @@ message FriendLists {
     string name = 2;
 }
 
-message FriendStatueRequest {
-    string friend_name = 1;
-    Statues_line statue = 2;
-}
-
-message FriendRequestNotification {
-    string from_username = 1;
-    string to_username = 2;
-    Statues_friend statue = 3;
-}
-
 message FriendChatMessage {
     string from_name = 1;
     string to_name = 2;
@@ -135,8 +207,8 @@ message FriendChatMessage {
 //     string time = 4;
 // }
 
-message GroupNotification {
-    string group_name = 1;
-    string member_name = 2;
-    bool action = 3;
-}
+// message GroupNotification {
+//     string group_name = 1;
+//     string member_name = 2;
+//     bool action = 3;
+// }

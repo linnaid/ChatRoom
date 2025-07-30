@@ -5,13 +5,14 @@ project(ChatApp)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 添加 proto 目录到包含路径中
+# 添加目录到包含路径中
 include_directories(${PROJECT_SOURCE_DIR}/Proto)
 include_directories(${PROJECT_SOURCE_DIR}/src/include)
 include_directories(${PROJECT_SOURCE_DIR}/src/Server/Redis)
 include_directories(${PROJECT_SOURCE_DIR}/src/Client/include)
 include_directories(${PROJECT_SOURCE_DIR}/src/Server/include)
 include_directories(${PROJECT_SOURCE_DIR}/src/Server/Mail)
+include_directories(${PROJECT_SOURCE_DIR}/src/Server/FTP_server/include)
 
 
 
@@ -28,6 +29,11 @@ file(GLOB PROTO_HDRS "${PROJECT_SOURCE_DIR}/Proto/*.pb.h")
 file(GLOB CLIENT_SRCS
     "${PROJECT_SOURCE_DIR}/src/Client/UserAuth/*.cc"
     "${PROJECT_SOURCE_DIR}/src/Client/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Client/UserChat/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Client/UserFile/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/tools/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Client/tools/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/include/*.cc"
 
 )
 
@@ -37,6 +43,15 @@ file(GLOB SERVER_SRCS
     "${PROJECT_SOURCE_DIR}/src/Server/*.cc"
     "${PROJECT_SOURCE_DIR}/src/Server/Redis/*.cc"
     "${PROJECT_SOURCE_DIR}/src/Server/Mail/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/Manage/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/net/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/Reactor/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/FTP_server/thread_pool/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/FTP_server/reactor/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/FTP_server/connect/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/Server/FTP_server/command/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/tools/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/include/*.cc"
 
 )
 

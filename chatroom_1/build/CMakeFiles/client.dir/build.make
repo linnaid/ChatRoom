@@ -83,10 +83,108 @@ CMakeFiles/client.dir/src/Client/UserAuth/User_auth_c.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserAuth/User_auth_c.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserAuth/User_auth_c.cc -o CMakeFiles/client.dir/src/Client/UserAuth/User_auth_c.cc.s
 
+CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/User_chat.cc
+CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o -MF CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o.d -o CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/User_chat.cc
+
+CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/User_chat.cc > CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.i
+
+CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/User_chat.cc -o CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.s
+
+CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/chat_tools.cc
+CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o -MF CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o.d -o CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/chat_tools.cc
+
+CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/chat_tools.cc > CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.i
+
+CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/chat_tools.cc -o CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.s
+
+CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_friends.cc
+CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o -MF CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o.d -o CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_friends.cc
+
+CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_friends.cc > CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.i
+
+CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_friends.cc -o CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.s
+
+CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_groups.cc
+CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o -MF CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o.d -o CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_groups.cc
+
+CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_groups.cc > CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.i
+
+CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/recv_groups.cc -o CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.s
+
+CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_friends.cc
+CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o -MF CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o.d -o CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_friends.cc
+
+CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_friends.cc > CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.i
+
+CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_friends.cc -o CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.s
+
+CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_groups.cc
+CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o -MF CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o.d -o CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_groups.cc
+
+CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_groups.cc > CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.i
+
+CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserChat/send_groups.cc -o CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.s
+
+CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/UserFile/FTP_client.cc
+CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o -MF CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o.d -o CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/UserFile/FTP_client.cc
+
+CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/UserFile/FTP_client.cc > CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.i
+
+CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/UserFile/FTP_client.cc -o CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.s
+
 CMakeFiles/client.dir/src/Client/main.cc.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/src/Client/main.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/main.cc
 CMakeFiles/client.dir/src/Client/main.cc.o: CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/client.dir/src/Client/main.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/client.dir/src/Client/main.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/main.cc.o -MF CMakeFiles/client.dir/src/Client/main.cc.o.d -o CMakeFiles/client.dir/src/Client/main.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/main.cc
 
 CMakeFiles/client.dir/src/Client/main.cc.i: cmake_force
@@ -97,10 +195,66 @@ CMakeFiles/client.dir/src/Client/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/main.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/main.cc -o CMakeFiles/client.dir/src/Client/main.cc.s
 
+CMakeFiles/client.dir/src/Client/tools/tools.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/Client/tools/tools.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/Client/tools/tools.cc
+CMakeFiles/client.dir/src/Client/tools/tools.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/client.dir/src/Client/tools/tools.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/Client/tools/tools.cc.o -MF CMakeFiles/client.dir/src/Client/tools/tools.cc.o.d -o CMakeFiles/client.dir/src/Client/tools/tools.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/Client/tools/tools.cc
+
+CMakeFiles/client.dir/src/Client/tools/tools.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/Client/tools/tools.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/Client/tools/tools.cc > CMakeFiles/client.dir/src/Client/tools/tools.cc.i
+
+CMakeFiles/client.dir/src/Client/tools/tools.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/Client/tools/tools.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/Client/tools/tools.cc -o CMakeFiles/client.dir/src/Client/tools/tools.cc.s
+
+CMakeFiles/client.dir/src/include/include.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/include/include.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/include/include.cc
+CMakeFiles/client.dir/src/include/include.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/client.dir/src/include/include.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/include/include.cc.o -MF CMakeFiles/client.dir/src/include/include.cc.o.d -o CMakeFiles/client.dir/src/include/include.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/include/include.cc
+
+CMakeFiles/client.dir/src/include/include.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/include/include.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/include/include.cc > CMakeFiles/client.dir/src/include/include.cc.i
+
+CMakeFiles/client.dir/src/include/include.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/include/include.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/include/include.cc -o CMakeFiles/client.dir/src/include/include.cc.s
+
+CMakeFiles/client.dir/src/tools/protocol.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/tools/protocol.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/tools/protocol.cc
+CMakeFiles/client.dir/src/tools/protocol.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/client.dir/src/tools/protocol.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/tools/protocol.cc.o -MF CMakeFiles/client.dir/src/tools/protocol.cc.o.d -o CMakeFiles/client.dir/src/tools/protocol.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/tools/protocol.cc
+
+CMakeFiles/client.dir/src/tools/protocol.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/tools/protocol.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/tools/protocol.cc > CMakeFiles/client.dir/src/tools/protocol.cc.i
+
+CMakeFiles/client.dir/src/tools/protocol.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/tools/protocol.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/tools/protocol.cc -o CMakeFiles/client.dir/src/tools/protocol.cc.s
+
+CMakeFiles/client.dir/src/tools/user_page.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/src/tools/user_page.cc.o: /home/linnaid/ChatRoom/chatroom_1/src/tools/user_page.cc
+CMakeFiles/client.dir/src/tools/user_page.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/client.dir/src/tools/user_page.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/src/tools/user_page.cc.o -MF CMakeFiles/client.dir/src/tools/user_page.cc.o.d -o CMakeFiles/client.dir/src/tools/user_page.cc.o -c /home/linnaid/ChatRoom/chatroom_1/src/tools/user_page.cc
+
+CMakeFiles/client.dir/src/tools/user_page.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/src/tools/user_page.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/src/tools/user_page.cc > CMakeFiles/client.dir/src/tools/user_page.cc.i
+
+CMakeFiles/client.dir/src/tools/user_page.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/src/tools/user_page.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/src/tools/user_page.cc -o CMakeFiles/client.dir/src/tools/user_page.cc.s
+
 CMakeFiles/client.dir/Proto/user_auth.pb.cc.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Proto/user_auth.pb.cc.o: /home/linnaid/ChatRoom/chatroom_1/Proto/user_auth.pb.cc
 CMakeFiles/client.dir/Proto/user_auth.pb.cc.o: CMakeFiles/client.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/client.dir/Proto/user_auth.pb.cc.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/client.dir/Proto/user_auth.pb.cc.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/Proto/user_auth.pb.cc.o -MF CMakeFiles/client.dir/Proto/user_auth.pb.cc.o.d -o CMakeFiles/client.dir/Proto/user_auth.pb.cc.o -c /home/linnaid/ChatRoom/chatroom_1/Proto/user_auth.pb.cc
 
 CMakeFiles/client.dir/Proto/user_auth.pb.cc.i: cmake_force
@@ -111,22 +265,76 @@ CMakeFiles/client.dir/Proto/user_auth.pb.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/Proto/user_auth.pb.cc.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/Proto/user_auth.pb.cc -o CMakeFiles/client.dir/Proto/user_auth.pb.cc.s
 
+CMakeFiles/client.dir/Proto/user_chat.pb.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/Proto/user_chat.pb.cc.o: /home/linnaid/ChatRoom/chatroom_1/Proto/user_chat.pb.cc
+CMakeFiles/client.dir/Proto/user_chat.pb.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/client.dir/Proto/user_chat.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/Proto/user_chat.pb.cc.o -MF CMakeFiles/client.dir/Proto/user_chat.pb.cc.o.d -o CMakeFiles/client.dir/Proto/user_chat.pb.cc.o -c /home/linnaid/ChatRoom/chatroom_1/Proto/user_chat.pb.cc
+
+CMakeFiles/client.dir/Proto/user_chat.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/Proto/user_chat.pb.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/Proto/user_chat.pb.cc > CMakeFiles/client.dir/Proto/user_chat.pb.cc.i
+
+CMakeFiles/client.dir/Proto/user_chat.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/Proto/user_chat.pb.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/Proto/user_chat.pb.cc -o CMakeFiles/client.dir/Proto/user_chat.pb.cc.s
+
+CMakeFiles/client.dir/Proto/user_friends.pb.cc.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/Proto/user_friends.pb.cc.o: /home/linnaid/ChatRoom/chatroom_1/Proto/user_friends.pb.cc
+CMakeFiles/client.dir/Proto/user_friends.pb.cc.o: CMakeFiles/client.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/client.dir/Proto/user_friends.pb.cc.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/client.dir/Proto/user_friends.pb.cc.o -MF CMakeFiles/client.dir/Proto/user_friends.pb.cc.o.d -o CMakeFiles/client.dir/Proto/user_friends.pb.cc.o -c /home/linnaid/ChatRoom/chatroom_1/Proto/user_friends.pb.cc
+
+CMakeFiles/client.dir/Proto/user_friends.pb.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/client.dir/Proto/user_friends.pb.cc.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/linnaid/ChatRoom/chatroom_1/Proto/user_friends.pb.cc > CMakeFiles/client.dir/Proto/user_friends.pb.cc.i
+
+CMakeFiles/client.dir/Proto/user_friends.pb.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/client.dir/Proto/user_friends.pb.cc.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/linnaid/ChatRoom/chatroom_1/Proto/user_friends.pb.cc -o CMakeFiles/client.dir/Proto/user_friends.pb.cc.s
+
 # Object files for target client
 client_OBJECTS = \
 "CMakeFiles/client.dir/src/Client/UserAuth/User_auth_c.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o" \
+"CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o" \
 "CMakeFiles/client.dir/src/Client/main.cc.o" \
-"CMakeFiles/client.dir/Proto/user_auth.pb.cc.o"
+"CMakeFiles/client.dir/src/Client/tools/tools.cc.o" \
+"CMakeFiles/client.dir/src/include/include.cc.o" \
+"CMakeFiles/client.dir/src/tools/protocol.cc.o" \
+"CMakeFiles/client.dir/src/tools/user_page.cc.o" \
+"CMakeFiles/client.dir/Proto/user_auth.pb.cc.o" \
+"CMakeFiles/client.dir/Proto/user_chat.pb.cc.o" \
+"CMakeFiles/client.dir/Proto/user_friends.pb.cc.o"
 
 # External object files for target client
 client_EXTERNAL_OBJECTS =
 
 client: CMakeFiles/client.dir/src/Client/UserAuth/User_auth_c.cc.o
+client: CMakeFiles/client.dir/src/Client/UserChat/User_chat.cc.o
+client: CMakeFiles/client.dir/src/Client/UserChat/chat_tools.cc.o
+client: CMakeFiles/client.dir/src/Client/UserChat/recv_friends.cc.o
+client: CMakeFiles/client.dir/src/Client/UserChat/recv_groups.cc.o
+client: CMakeFiles/client.dir/src/Client/UserChat/send_friends.cc.o
+client: CMakeFiles/client.dir/src/Client/UserChat/send_groups.cc.o
+client: CMakeFiles/client.dir/src/Client/UserFile/FTP_client.cc.o
 client: CMakeFiles/client.dir/src/Client/main.cc.o
+client: CMakeFiles/client.dir/src/Client/tools/tools.cc.o
+client: CMakeFiles/client.dir/src/include/include.cc.o
+client: CMakeFiles/client.dir/src/tools/protocol.cc.o
+client: CMakeFiles/client.dir/src/tools/user_page.cc.o
 client: CMakeFiles/client.dir/Proto/user_auth.pb.cc.o
+client: CMakeFiles/client.dir/Proto/user_chat.pb.cc.o
+client: CMakeFiles/client.dir/Proto/user_friends.pb.cc.o
 client: CMakeFiles/client.dir/build.make
 client: /usr/local/lib/libprotobuf.so
 client: CMakeFiles/client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/linnaid/ChatRoom/chatroom_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Linking CXX executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

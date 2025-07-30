@@ -45,6 +45,7 @@ PROTOBUF_CONSTEXPR Register_Ver::Register_Ver(
     ::_pbi::ConstantInitialized): _impl_{
     /*decltype(_impl_.email_msg_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.time_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
+  , /*decltype(_impl_.username_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.decide_)*/false
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct Register_VerDefaultTypeInternal {
@@ -123,7 +124,7 @@ struct LogInRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 LogInRequestDefaultTypeInternal _LogInRequest_default_instance_;
 PROTOBUF_CONSTEXPR LogInResponse::LogInResponse(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.decide_)*/false
+    /*decltype(_impl_.decide_)*/0
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct LogInResponseDefaultTypeInternal {
   PROTOBUF_CONSTEXPR LogInResponseDefaultTypeInternal()
@@ -177,6 +178,7 @@ const uint32_t TableStruct_user_5fauth_2eproto::offsets[] PROTOBUF_SECTION_VARIA
   PROTOBUF_FIELD_OFFSET(::auth::Register_Ver, _impl_.email_msg_),
   PROTOBUF_FIELD_OFFSET(::auth::Register_Ver, _impl_.decide_),
   PROTOBUF_FIELD_OFFSET(::auth::Register_Ver, _impl_.time_),
+  PROTOBUF_FIELD_OFFSET(::auth::Register_Ver, _impl_.username_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::auth::Login_Ver, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -237,12 +239,12 @@ const uint32_t TableStruct_user_5fauth_2eproto::offsets[] PROTOBUF_SECTION_VARIA
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::auth::Auth)},
   { 14, -1, -1, sizeof(::auth::Register_Ver)},
-  { 23, -1, -1, sizeof(::auth::Login_Ver)},
-  { 33, -1, -1, sizeof(::auth::RegisterRequest)},
-  { 44, -1, -1, sizeof(::auth::RegisterResponse)},
-  { 53, -1, -1, sizeof(::auth::LogInRequest)},
-  { 64, -1, -1, sizeof(::auth::LogInResponse)},
-  { 71, -1, -1, sizeof(::auth::LogoutResquest)},
+  { 24, -1, -1, sizeof(::auth::Login_Ver)},
+  { 34, -1, -1, sizeof(::auth::RegisterRequest)},
+  { 45, -1, -1, sizeof(::auth::RegisterResponse)},
+  { 54, -1, -1, sizeof(::auth::LogInRequest)},
+  { 65, -1, -1, sizeof(::auth::LogInResponse)},
+  { 72, -1, -1, sizeof(::auth::LogoutResquest)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -264,27 +266,28 @@ const char descriptor_table_protodef_user_5fauth_2eproto[] PROTOBUF_SECTION_VARI
   "InRequest\022 \n\003los\030\005 \001(\0132\023.auth.LogInRespo"
   "nse\022!\n\005R_ver\030\006 \001(\0132\022.auth.Register_Ver\022\036"
   "\n\005L_ver\030\007 \001(\0132\017.auth.Login_Ver\022\013\n\003msg\030\010 "
-  "\001(\t\"\?\n\014Register_Ver\022\021\n\temail_msg\030\001 \001(\t\022\016"
-  "\n\006decide\030\002 \001(\010\022\014\n\004time\030\003 \001(\t\"N\n\tLogin_Ve"
-  "r\022\016\n\006decide\030\001 \001(\010\022\021\n\temail_msg\030\002 \001(\t\022\014\n\004"
-  "time\030\003 \001(\t\022\020\n\010username\030\004 \001(\t\"n\n\017Register"
-  "Request\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 "
-  "\001(\t\022\r\n\005email\030\003 \001(\t\022\r\n\005phone\030\004 \001(\t\022\031\n\021ver"
-  "ification_code\030\005 \001(\t\"=\n\020RegisterResponse"
-  "\022\016\n\006decide\030\001 \001(\010\022\013\n\003msg\030\002 \001(\t\022\014\n\004time\030\004 "
-  "\001(\t\"z\n\014LogInRequest\022\034\n\006select\030\001 \001(\0162\014.au"
-  "th.Select\022\020\n\010username\030\002 \001(\t\022\020\n\010password\030"
-  "\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\031\n\021Verification_cod"
-  "e\030\005 \001(\t\"\037\n\rLogInResponse\022\016\n\006decide\030\001 \001(\010"
-  "\"4\n\016LogoutResquest\022\020\n\010username\030\001 \001(\t\022\020\n\010"
-  "password\030\002 \001(\t*U\n\007actions\022\013\n\007UNKNOWN\020\000\022\t"
-  "\n\005LOGIN\020\001\022\n\n\006LOGOUT\020\002\022\014\n\010REGISTER\020\003\022\013\n\007R"
-  "VERIFY\020\004\022\013\n\007LVERIFY\020\005*!\n\006Select\022\014\n\010PASSW"
-  "ORD\020\000\022\t\n\005EMAIL\020\001b\006proto3"
+  "\001(\t\"Q\n\014Register_Ver\022\021\n\temail_msg\030\001 \001(\t\022\016"
+  "\n\006decide\030\002 \001(\010\022\014\n\004time\030\003 \001(\t\022\020\n\010username"
+  "\030\004 \001(\t\"N\n\tLogin_Ver\022\016\n\006decide\030\001 \001(\010\022\021\n\te"
+  "mail_msg\030\002 \001(\t\022\014\n\004time\030\003 \001(\t\022\020\n\010username"
+  "\030\004 \001(\t\"n\n\017RegisterRequest\022\020\n\010username\030\001 "
+  "\001(\t\022\020\n\010password\030\002 \001(\t\022\r\n\005email\030\003 \001(\t\022\r\n\005"
+  "phone\030\004 \001(\t\022\031\n\021verification_code\030\005 \001(\t\"="
+  "\n\020RegisterResponse\022\016\n\006decide\030\001 \001(\010\022\013\n\003ms"
+  "g\030\002 \001(\t\022\014\n\004time\030\004 \001(\t\"z\n\014LogInRequest\022\034\n"
+  "\006select\030\001 \001(\0162\014.auth.Select\022\020\n\010username\030"
+  "\002 \001(\t\022\020\n\010password\030\003 \001(\t\022\r\n\005email\030\004 \001(\t\022\031"
+  "\n\021Verification_code\030\005 \001(\t\"\037\n\rLogInRespon"
+  "se\022\016\n\006decide\030\001 \001(\005\"4\n\016LogoutResquest\022\020\n\010"
+  "username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t*U\n\007acti"
+  "ons\022\013\n\007UNKNOWN\020\000\022\t\n\005LOGIN\020\001\022\n\n\006LOGOUT\020\002\022"
+  "\014\n\010REGISTER\020\003\022\013\n\007RVERIFY\020\004\022\013\n\007LVERIFY\020\005*"
+  "!\n\006Select\022\014\n\010PASSWORD\020\000\022\t\n\005EMAIL\020\001b\006prot"
+  "o3"
   ;
 static ::_pbi::once_flag descriptor_table_user_5fauth_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_user_5fauth_2eproto = {
-    false, false, 944, descriptor_table_protodef_user_5fauth_2eproto,
+    false, false, 962, descriptor_table_protodef_user_5fauth_2eproto,
     "user_auth.proto",
     &descriptor_table_user_5fauth_2eproto_once, nullptr, 0, 8,
     schemas, file_default_instances, TableStruct_user_5fauth_2eproto::offsets,
@@ -833,6 +836,7 @@ Register_Ver::Register_Ver(const Register_Ver& from)
   new (&_impl_) Impl_{
       decltype(_impl_.email_msg_){}
     , decltype(_impl_.time_){}
+    , decltype(_impl_.username_){}
     , decltype(_impl_.decide_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
@@ -853,6 +857,14 @@ Register_Ver::Register_Ver(const Register_Ver& from)
     _this->_impl_.time_.Set(from._internal_time(), 
       _this->GetArenaForAllocation());
   }
+  _impl_.username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.username_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_username().empty()) {
+    _this->_impl_.username_.Set(from._internal_username(), 
+      _this->GetArenaForAllocation());
+  }
   _this->_impl_.decide_ = from._impl_.decide_;
   // @@protoc_insertion_point(copy_constructor:auth.Register_Ver)
 }
@@ -864,6 +876,7 @@ inline void Register_Ver::SharedCtor(
   new (&_impl_) Impl_{
       decltype(_impl_.email_msg_){}
     , decltype(_impl_.time_){}
+    , decltype(_impl_.username_){}
     , decltype(_impl_.decide_){false}
     , /*decltype(_impl_._cached_size_)*/{}
   };
@@ -874,6 +887,10 @@ inline void Register_Ver::SharedCtor(
   _impl_.time_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
     _impl_.time_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  _impl_.username_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.username_.Set("", GetArenaForAllocation());
   #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
@@ -890,6 +907,7 @@ inline void Register_Ver::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
   _impl_.email_msg_.Destroy();
   _impl_.time_.Destroy();
+  _impl_.username_.Destroy();
 }
 
 void Register_Ver::SetCachedSize(int size) const {
@@ -904,6 +922,7 @@ void Register_Ver::Clear() {
 
   _impl_.email_msg_.ClearToEmpty();
   _impl_.time_.ClearToEmpty();
+  _impl_.username_.ClearToEmpty();
   _impl_.decide_ = false;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -939,6 +958,16 @@ const char* Register_Ver::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
           ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
           CHK_(::_pbi::VerifyUTF8(str, "auth.Register_Ver.time"));
+        } else
+          goto handle_unusual;
+        continue;
+      // string username = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
+          auto str = _internal_mutable_username();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "auth.Register_Ver.username"));
         } else
           goto handle_unusual;
         continue;
@@ -997,6 +1026,16 @@ uint8_t* Register_Ver::_InternalSerialize(
         3, this->_internal_time(), target);
   }
 
+  // string username = 4;
+  if (!this->_internal_username().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_username().data(), static_cast<int>(this->_internal_username().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "auth.Register_Ver.username");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_username(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -1025,6 +1064,13 @@ size_t Register_Ver::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_time());
+  }
+
+  // string username = 4;
+  if (!this->_internal_username().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_username());
   }
 
   // bool decide = 2;
@@ -1056,6 +1102,9 @@ void Register_Ver::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   if (!from._internal_time().empty()) {
     _this->_internal_set_time(from._internal_time());
   }
+  if (!from._internal_username().empty()) {
+    _this->_internal_set_username(from._internal_username());
+  }
   if (from._internal_decide() != 0) {
     _this->_internal_set_decide(from._internal_decide());
   }
@@ -1085,6 +1134,10 @@ void Register_Ver::InternalSwap(Register_Ver* other) {
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &_impl_.time_, lhs_arena,
       &other->_impl_.time_, rhs_arena
+  );
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.username_, lhs_arena,
+      &other->_impl_.username_, rhs_arena
   );
   swap(_impl_.decide_, other->_impl_.decide_);
 }
@@ -2520,7 +2573,7 @@ inline void LogInResponse::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.decide_){false}
+      decltype(_impl_.decide_){0}
     , /*decltype(_impl_._cached_size_)*/{}
   };
 }
@@ -2548,7 +2601,7 @@ void LogInResponse::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.decide_ = false;
+  _impl_.decide_ = 0;
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -2558,10 +2611,10 @@ const char* LogInResponse::_InternalParse(const char* ptr, ::_pbi::ParseContext*
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bool decide = 1;
+      // int32 decide = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.decide_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _impl_.decide_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -2595,10 +2648,10 @@ uint8_t* LogInResponse::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool decide = 1;
+  // int32 decide = 1;
   if (this->_internal_decide() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_decide(), target);
+    target = ::_pbi::WireFormatLite::WriteInt32ToArray(1, this->_internal_decide(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2617,9 +2670,9 @@ size_t LogInResponse::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bool decide = 1;
+  // int32 decide = 1;
   if (this->_internal_decide() != 0) {
-    total_size += 1 + 1;
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_decide());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);

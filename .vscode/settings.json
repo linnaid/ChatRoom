@@ -69,7 +69,13 @@
         "source_location": "cpp",
         "shared_mutex": "cpp",
         "span": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "*.inc": "cpp",
+        "any": "cpp",
+        "forward_list": "cpp",
+        "ranges": "cpp",
+        "valarray": "cpp",
+        "filesystem": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

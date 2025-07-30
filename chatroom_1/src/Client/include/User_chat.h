@@ -39,6 +39,8 @@ enum Group {
     MANAGEGROUP = 3,
     GROUPLIST = 4,
     FINDREQ = 5,
+    DECIDEREQ = 6,
+    QUITNTY = 9,
     QUIT = 0
 };
 
@@ -157,6 +159,8 @@ private:
 
     void group_request();
 
+    void deicde_group_request();
+
     
 
     void recv_add_group(const chat::Chat& chat_msg);
@@ -166,6 +170,10 @@ private:
     void decide_join_group(const chat::Chat& chat_msg);
 
     void print_group_list(const chat::Chat& chat_msg);
+    
+    void print_group_notify(const chat::Chat& chat_msg);
+
+
 
 
     int _sockfd;
@@ -192,7 +200,7 @@ private:
     std::unordered_set<std::string> friends_block;
     std::unordered_set<std::string> friends_by_block;
     std::unordered_map<std::string, std::vector<std::string>> friends_files;
-    std::unordered_set<std::string> usergroups;
+    std::unordered_set<std::string> user_groups;
 
 
 };

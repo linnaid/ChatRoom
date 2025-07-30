@@ -133,11 +133,15 @@ void UserChat::runRecive() {
                     break;
                 case chat::Group::JOINGROUP:
                     decide_join_group(chat_msg);
+                    break;
                 case chat::Group::JOINGROUPRESPONSE:
                     print_join_group(chat_msg);
                     break;
                 case chat::Group::GROUPLIST:
                     print_group_list(chat_msg);
+                    break;
+                case chat::Group::FINDREQ:
+                    print_group_notify(chat_msg);
                     break;
                 case chat::Group::GROUP_QUIT:
                     break;
@@ -163,6 +167,7 @@ void UserChat::runRecive() {
     timeout.tv_sec = 0;
     setsockopt(_sockfd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout));
 }
+
 
 void UserChat::runSend() {
     std::string msg;
@@ -200,7 +205,7 @@ void UserChat::runGroup() {
     bool _return = true;
     while(_return) {
         std::cin >> choice;
-        if(std::cin.fail() || choice > 4 || choice < 0) {
+        if(std::cin.fail() || choice > 6 || choice < 0) {
             Clear::clearScreen();
             std::cout << "\033[1;31m输入错误,请重新输入:\033[0m" << std::endl;
             std::cin.clear();
@@ -225,6 +230,9 @@ void UserChat::runGroup() {
         case Group::FINDREQ:
             group_request();
             break;
+        case Group::DECIDEREQ:
+            deicde_group_request();
+            break;
         case Group::QUIT:
             _return = false;
             break;
@@ -232,11 +240,6 @@ void UserChat::runGroup() {
     }
 }
 
-void UserChat::group_request() {
-    chat::Chat chat_group;
-    chat_group.set_group(chat::Group::FINDREQ);
-    
-}
 
 void UserChat::runGroups() {
     bool _return = true;

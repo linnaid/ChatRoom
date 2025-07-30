@@ -49,10 +49,16 @@ void UserChat::save_friends(const chat::Chat& chat_msg) {
     auto proto_frends = chat_msg.friends().friends();
     std::string msg;
     for(const auto& [key, value] : proto_frends) {
+        std::cout << key << "ss" << std::endl;
         friends.insert(key);
         // if(value) {
         //     friedns_online[key] = true;
         // }
+    }
+    auto proto_groups = chat_msg.group_list().groups();
+    for(const auto& group : proto_groups) {
+        std::cout << group << "sss" << std::endl;
+        user_groups.insert(group);
     }
 }
 

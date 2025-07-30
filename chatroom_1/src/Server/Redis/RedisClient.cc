@@ -385,6 +385,19 @@ bool RedisClient::SetGroupMember(const std::string& uuid,
     }
 }
 
+// 获取群成员
+std::vector<std::string> RedisClient::getGroupMember(const std::string& uuid) {
+    std::vector<std::string> values;
+    try {
+        std::string key = RedisKey::GroupKey(uuid) + ":" + "members";
+        _redis.lrange(key, 0, -1, std::back_inserter(values));
+        return values;
+    } catch (const sw::redis::Error &e) {
+        std::cerr << "Redis Error:" << e.what() << std::endl;
+        return values;
+    }
+}
+
 // 向成员所属群聊添加元素
 bool RedisClient::UserSetGroups(const std::string& username, 
                                 const std::string& u_name, 
@@ -466,11 +479,29 @@ bool RedisClient::setGroupNotify(const std::string& username,
     }
 }
 
+// 获取群成员申请消息
 std::unordered_map<std::string, std::string> RedisClient::getGroupNotify (const std::string& username) {
     std::unordered_map<std::string, std::string> notify;
     try {
-        std::string key = RedisKey::ManagerKey()
+        std::string key = RedisKey::ManagerKey(username);
+        _redis.hgetall(key, std::inserter(notify, notify.begin()));
+        return notify;
+    } catch(const sw::redis::Error &e) {
+        std::cerr << "Redis Error: " << e.what() << std::endl;
+        return notify;
     }
 }
 
+// 删除申请消息
+bool RedisClient::delGroupNotify(const std::string& username, 
+                                 const std::string& g_name) {
+    try {
+        std::string key = RedisKey::ManagerKey(username);
+        auto ret = _redis.hdel(key, g_name);
+        return ret;
+    } catch(const sw::redis::Error &e) {
+        std::cerr << "Redis Error: " << e.what() << std::endl;
+        return false;
+    }
+}
 

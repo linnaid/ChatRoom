@@ -1,0 +1,9 @@
+# 忽略构建文件
+/build/
+/*.o
+*.exe
+*.out
+
+# 忽略 IDE 文件
+.vscode/
+*.swp
